@@ -1,0 +1,217 @@
+{extends file="main.html"}
+{block name="title"}经销商管理{/block}
+{block name="cssjs"}
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.js?v={#cssjs_version#}"></script>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.cityselect.js?v={#cssjs_version#}"></script>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery-ui-1.10.3.custom.min.js?v={#cssjs_version#}"></script>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.validationEngine-zh_CN.js?v={#cssjs_version#}"></script>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.validationEngine.js?v={#cssjs_version#}"></script>
+<link href="{#YXP_STATIC_DOMAIN#}/css/cp/validationEngine.jquery.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+{/block}
+
+{block name="menu"}
+{include file="admin/_sub_nav.html"}
+{/block}
+
+{block name="body"}
+ <div id="mcon">
+    <div id="mcentent" class="cf">
+      <!--发起拍卖左侧开始-->
+      <div class="fqleft">
+       <ul>
+          <li><a href="/admin/manager/" class="hover">经销商管理</a></li>
+         <!--  <li><a href="/admin/manager/user_manager/">经销商用户管理</a></li> -->
+       </ul>
+      </div>
+      <!--发起拍左侧卖开始-->
+      <!--发起拍卖右侧侧开始-->
+      <div class="fqright fqbox">
+        <div class="fqboxfh">
+          {if $opt=="1"}
+            <em>经销商资料新建</em>
+          {else}
+            <em>经销商资料修改</em>
+          {/if}
+        </div>
+        <div class="csnewlist">
+          <form action=""  method="post"  id="formfee">
+          <input type="hidden" id="opt" name="opt" value="{$opt}">
+          <input type="hidden" id="dealerid" name="dealerid" value="{if $dealer.dealerid}{$dealer.dealerid}{/if}">
+          <input type="hidden" id="user_id" name="user_id" value="{if $dealer.user_id}{$dealer.user_id}{/if}">
+          <table width="600" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                {if $type=="3"}
+                  <td class="csnewtd">经纪公司名称：&nbsp;</td>
+                {else}
+                  <td class="csnewtd">经销商名称：&nbsp;</td>
+                {/if}
+                  <td>
+                    <input name="dealername" type="text" id="dealername" class="fqchepai validate[required],minSize[3],maxSize[15]" value="{if $dealer.name}{$dealer.name}{/if}"data-errormessage-value-missing=" * 请填写经销商名称！" style="margin-right:0"/>
+                  </td>
+              </tr>  
+              <tr>
+                {if $type=="3"}
+                  <td class="csnewtd">经纪公司代码：&nbsp;</td>
+                {else}
+                  <td class="csnewtd">登录账号：&nbsp;</td>
+                {/if}
+                <td><input name="dealercode" type="text" id="dealercode" 
+                  class="fqchepai validate[required,maxSize[20]]" 
+                  value="{if $user.username}{$user.username}{/if}"  {if $opt eq 2}disabled="disabled"{/if}  data-errormessage-value-missing=" * 请填写登录账号！" style="margin-right:0"/></td>
+              </tr>
+              <tr>
+              <td class="csnewtd">所在地：&nbsp;</td>
+              <td id="city">
+                <span class="manager_pro"><select name="provinceid" id="provinceid"></select></span>
+                <span class="manager_city"><select class="cityid" name="cityid" disabled="disabled"></select></span>
+                  <script type="text/javascript">
+                  var list = new Array();
+                  {if $dealer.provinceid}
+                    list['provinceid'] = '{$dealer.pro_id}';
+                  {/if}
+                  {if $dealer.cityid}
+                    list['cityid'] = '{$dealer.city_id}';
+                  {/if}
+                  </script> 
+              </td>
+            </tr>
+              <tr>
+                <td class="csnewtd">联系人：&nbsp;</td>
+                <td><input name="name" type="text" id="username" class="fqchepai validate[required,maxSize[20]] " data-errormessage-value-missing=" * 请填写联系人！" value="{if $user.name}{$user.name}{/if}" style="margin-right:0"/></td>
+              </tr>
+               <tr>
+                <td class="csnewtd">联系方式：&nbsp;</td>
+                <td><input name="mobile" type="text" id="mobile" class="fqchepai validate[required,custom[telephone],minSize[11],maxSize[11]] "  value="{if $user.mobile}{$user.mobile}{/if}" data-errormessage-value-missing=" * 请填写联系方式！" style="margin-right:0"/></td>
+              </tr>
+              <input type="hidden" name="type" value="2">
+              
+              {if !$user.userid}
+              <tr>
+                <td class="csnewtd">登陆密码：&nbsp;</td>
+                <td><input name="password" type="password" id="password" class="fqchepai validate[required,minSize[6],maxSize[20],custom[onlyLetterNumber]]" data-errormessage-value-missing=" * 请填写密码！" style="margin-right:0"/></td>
+              </tr>
+               <tr>
+                <td class="csnewtd">确认密码：&nbsp;</td>
+                <td><input name="sur_password" type="password" id="password_2" class="fqchepai validate[condRequired[password],equals[password]]"  data-errormessage-value-missing=" * 请填写确认密码！" style="margin-right:0"/></td>
+              </tr>
+              {/if}
+			        <tr>
+                <td class="csnewtd"></td>
+                <td>
+                    <button type="button" onclick="send();" class="jb_ok">保存</button>
+                    <a href="javascript:history.go(-1);" class="jb-cancel">取消</a>
+                </td>
+              </tr>
+            </table>
+
+          </form>
+        </div>
+      <!--发起拍卖右侧侧结束-->
+    </div>
+  </div>
+<div class="clear"></div>
+<div id="footer"></div>
+<script type="text/javascript">
+  $(document).ready(function() {
+    get_getpro(list);
+    $("#formfee").validationEngine({
+    scroll: false,
+    promptPosition: 'centerRight',
+    maxErrorsPerField: 1,
+    showOneMessage: true,
+    addPromptClass: 'formError-noArrow formError-text'
+  });
+    //初始化大区城市
+    /*var opt={$opt};
+
+    if(opt == 1)
+    {
+      //$("#city").citySelect({});
+    }
+    else if(opt == 2)
+    {
+      $("#city").citySelect({
+        area:"{$dealer.bigareaid}",
+        prov:"{$dealer.pro_id}",
+        city:"{$dealer.city_id}",
+        required:true
+      });
+    }*/
+  });
+  /**
+   * 提交表单
+   */
+  function send(){
+    if($("#formfee").validationEngine('validate')){    
+      if ($('#cityid').val() == undefined || $('#cityid').val() == 0){
+        alert('请选择经销商所在地！');
+        return false;
+      }
+      var flag1 = true;
+      var flag2 = true;
+
+      //验证
+      if($('#mobile').val()!="" && $('#mobile').val()!=undefined ){
+        $.ajax({
+          type: "GET",
+          url: "/api/checkuser?fieldValue="+encodeURIComponent($('#mobile').val())+"&fieldId=mobile&dealerid={$dealer.dealerid}",
+          async:false,
+          success : function(data){
+            if(data=="0"){
+              alert('联系电话已存在，请核实！');
+              $('#mobile').focus();
+              flag2 = false;
+            }else{
+              flag2 = true;
+            }
+          }
+        });
+      }
+
+      if($('#dealercode').val()!="" && $('#dealercode').val()!=undefined ){
+        $.ajax({
+          type: "GET",
+          url: "/api/checkuser?fieldValue="+encodeURIComponent($('#dealercode').val())+"&fieldId=dealercode&dealerid={$dealer.dealerid}",
+          async:false,
+          success : function(data){
+            if(data=="0"){
+              alert('登录账号已存在，请核实！');
+              $('#dealercode').focus();
+              flag2 = false;
+            }else{
+              flag2 = true;
+            }
+          }
+        });
+      }
+
+      if(flag1 && flag2){
+        $('button').attr("disabled",true);
+          $.post("/admin/manager/add_manager/",$('#formfee').serializeArray(), function(data){
+            
+             if(data>0)
+             {
+                var opt={$opt};
+                if(opt==1){
+                   alert('添加成功');
+                   window.location.href='/admin/manager/';
+                 }else{
+                   alert('更新成功');
+                   window.location.href="/admin/manager/index?page={$get.page}&provinceid={$get.provinceid}&cityid={$get.cityid}&dealername={$get.dealername}";
+                 }
+             }
+            else if(data==-1)
+             {
+                alert('您输入的用户名已经存在');
+             }
+             else
+             {
+               alert('添加失败');
+             }
+             $('button').attr("disabled",false);
+          });
+      }
+    }
+  }
+</script>
+{/block}

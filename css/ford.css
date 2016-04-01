@@ -1,0 +1,37 @@
+.hide { display:none; }
+.w60 { width:60px; }
+.w80 { width:80px; }
+.fr { float:right; }
+.pr30 { padding-right:30px; }
+.p30 { padding:30px; }
+.p5 { padding:5px; }
+.w350 { width:350px; }
+.w140 { width:140px; }
+.w100 { width:100px; }
+.w400 { width:400px; }
+.w120 { width:120px; }
+.w150 { width:150px; }
+.w200 { width:200px; }
+.pt10 { padding-top:10px; }
+.mmsgbox li { padding:3px;line-height:25px; }
+.tr-odd {  background-color: #F6F6F6; }
+.go-page-r{text-align:center;line-height:30px;padding:10px 0;}
+.go-page-r a{border:1px solid #efefef;padding:5px 10px;margin:0 10px;}
+.go-page-r strong{background:#f29100;border:1px solid #e55700;padding:5px 10px;margin:0 10px;color:#fff;}
+
+.fordheader {
+	border-right: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+    height: 30px;
+    line-height: 30px;
+    text-align:center;
+    width: 350px;
+	font-weight:bold;
+}
+.fordtd {
+	border-right: 1px solid #CCCCCC;
+    border-top: 1px solid #CCCCCC;
+	text-align:center;
+	line-height:30px;
+}
+select { height:22px }

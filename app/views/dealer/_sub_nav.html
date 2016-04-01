@@ -1,0 +1,6 @@
+<div class="menu w1000">
+   <a href="/dealer/" {if $y_c eq 'index' && $y_a eq 'index'}class="hover"{/if}>首页</a>
+   <a href="/dealer/auction/" {if $y_c eq 'auction' && $y_a eq 'index'}class="hover"{/if}>拍卖大厅</a>
+   <a href="/dealer/auction/owner_bid/" {if $y_c eq 'auction' && ($y_a eq 'owner_bid' || $y_a eq 'all_bid')}class="hover"{/if}>竞拍管理</a>
+   <a href="/dealer/account/" {if $y_c eq 'account' && ($y_a eq 'index' or $y_a eq 'manage')}class="hover"{/if}>账户管理</a>
+</div>

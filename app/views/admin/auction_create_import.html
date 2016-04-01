@@ -1,0 +1,140 @@
+{extends file="main.html"}
+{block name="cssjs"}
+<link href="{#YXP_STATIC_DOMAIN#}/css/cp/jquery-ui-1.10.3.custom.min.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery-ui-1.10.3.custom.min.js?v={#cssjs_version#}"></script>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.ui.datepicker-zh-CN.js?v={#cssjs_version#}"></script>
+<script src="{#YXP_STATIC_DOMAIN#}/js/yxp_chosen/yxp_chosen.jquery.js?v={#cssjs_version#}" type="text/javascript"></script>
+<link href="{#YXP_STATIC_DOMAIN#}/js/yxp_chosen/yxp_chosen.jquery.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="title"}发起拍卖{/block}
+{block name="menu"}
+{include file="admin/_sub_nav.html"}
+{/block}
+{block name="body"}
+<div id="mcentent" class="cf">
+	<div class="fqleftBg">
+		<form id="auction_create_form"  method="">
+			{if $car.carid}<input type="hidden" name="carid" value="{$car.carid}">{/if}
+			<!--发起拍卖左侧开始-->
+			<div class="fqleft">
+				<ul>
+					<li><a href="javascript:void(0)" class="hover facnav" id="facnav_1">价格及时间设置</a></li>
+					<!-- <li><a href="javascript:void(0)" class=" facnav" id="facnav_2">完成</a></li> -->
+				</ul>
+			</div>
+			<!--发起拍左侧卖开始-->
+			<!--发起拍卖右侧侧开始-->
+			<div class="fqright fqbox">
+				{include file="admin/auction_create_1.html"}
+				{include file="admin/auction_create_2.html"}
+			</div>
+			<!--发起拍卖右侧侧结束-->
+			<input type="hidden" name="hy_carid" value="{$hy_carid}" >
+			<input type="hidden" name="car_name" value="{$car_info.carfullname}" >
+			<input type="hidden" name="chake_vin" value="{$car_info.vin}" >
+			<input type="hidden" name="brand_id" value="{$car_info.branid}" >
+			<input type="hidden" name="series_id" value="{$car_info.serieid}" >
+			<input type="hidden" name="trim_id" value="{$car_info.carbasicid}" >
+			<input type="hidden" name="no" value="{$car_info.licensecar}" >
+			<input type="hidden" name="chake_task_id" value="{$car_info.taskid}" >
+			<input type="hidden" name="prov_id" value="{$car_info.licensprovince}" >
+			<input type="hidden" name="city_id" value="{$car_info.licenscity}" >
+			<input type="hidden" name="regist_time" value="{$car_info.licenseyear}" >
+			<input type="hidden" name="shows_mileage" value="{$car_info.mileage}" >
+			<input type="hidden" name="color" value="{$car_info.carbodycolor}" >
+			<input type="hidden" name="car_base_img" value="{$car_info.car_base_img}" >
+			<input type="hidden" name="source_from" value="{$car_info.source_from}">
+		</form>
+	</div>
+</div>
+<script>
+
+//上、下一步
+function fac_step(n) {
+	var flag = true;	
+	//最后一步预览信息
+	if(n == 2) {
+		
+		// $('#ae_dealer_name').html($('#dealer_id').find("option:selected").text());
+		$('#ae_trim').html( "{$car_info.carfullname}" );
+		$('#ae_price').html($('#price').val());
+
+		var ae_time = $('#choose_day').val() +  ' ' + $('#end_time').val() + ":00:00";
+		$('#ae_time').html(ae_time);
+		
+		var sprice = $('#start_price').val();
+		$('#start_price_span').html(sprice); //起拍
+                
+        if($('#price').val()==0){
+			alert("请填写保留价");
+			flag = false;
+			return ;
+		}
+		 if($('#end_time').val()== null){
+			alert("今日发拍时间已过,请选择其他发布日期");
+			flag = false;
+			return ;
+		}
+                /*if (typeof($('input:radio[name=bid_area]:checked').val()) == 'undefined'){
+                   alert("请选择发拍地域");
+                   flag = false;
+                   return;
+                }*/
+		
+            if($('#choose_day').val()==''){
+			alert("请选择竞拍日期");
+			flag = false;
+			return ;
+		}
+		$.ajax({
+			type: "GET",
+			url: "/api/checktime?end_time="+encodeURIComponent(ae_time),
+			async:false,
+			success : function(data){
+				if(data == 0){
+					alert('该竞价场次发布已满,请选择其他时间!');
+					$('#end_time').focus();
+					flag = false;
+				}else{
+					flag = true;
+				}
+			}
+		});
+	}
+	if(flag){
+		for(var i=1; i<9; i++) {
+			$('#facnav_'+i).removeClass('hover');
+			$('#fac_'+i).hide();
+		}
+		$('#facnav_'+n).addClass('hover');
+			$('#fac_'+n).show();
+	}
+}
+$('.facnav').click(function(){
+	var fac = this.id.split('_');
+	fac_step(fac[1]);
+})
+fac_step(1);
+
+$('#submit').click(function(){
+	$.post("/admin/auction/import_post/",$('#auction_create_form').serializeArray(),function(data){
+			if(data.status==1)
+			{
+				$('#submit').addClass('hide');
+				$('#pre').addClass('hide');
+				$('#check').removeClass('hide');
+				$('#keep').removeClass('hide');
+				$('#over').text('发拍成功');
+				$('#msg').text('恭喜您,拍卖车源发布成功!');
+				$('#pn span').text(data.pn);
+				$('#pn').removeClass('hide');
+			}
+			else
+			{
+			alert(data.msg);
+			window.location.href="/admin/auction/import/?page=1";
+			}
+	    },'json');
+});
+</script>
+{/block}

@@ -1,0 +1,42 @@
+{config_load file='smarty.conf' scope='global'}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="{#YXP_STATIC_DOMAIN#}/css/cp/reset.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+<link href="{#YXP_STATIC_DOMAIN#}/css/cp/global.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+<link href="{#YXP_STATIC_DOMAIN#}/chrysler/css/common.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+<link href="{#YXP_STATIC_DOMAIN#}/css/cp/page.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+<link href="{#YXP_STATIC_DOMAIN#}/chrysler/css/chrysler.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="ejectw">
+<div class="ejectH"><h4>出价记录</h4></div>
+<div style="text-align:right;margin-right:50px;margin-top:10px"><a href="/dealer/auction/publish_bid/?type=export&pid={$pid}" class=""><img src="{#YXP_STATIC_DOMAIN#}/css/ford/images/excle.jpg"></a></div>
+<div class="ejectTab">
+
+{if $bid}
+	<table width="100%">
+	<tr>
+		<td>买家经销商</td>
+		<td>出价时间（倒序）</td>
+		<td>出价金额（万元）</td>
+		<td>出价方式</td>
+	</tr>
+	{foreach $bid as $b}
+		<tr>
+			<td>{$b.dealer_name}</td>
+			<td>{$b.bcreatetime|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+			<td>{$b.price}</td>
+			<td>{if $b.type==1}投标{else}竞价{/if}</td>
+		</tr>
+	{/foreach}
+	</table>
+{else}
+	<h3 class="p30">暂时没有出价记录！</h3>
+{/if}
+</div>
+
+</div>
+</body>
+</html>

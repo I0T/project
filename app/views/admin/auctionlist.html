@@ -1,0 +1,322 @@
+{extends file="main.html"}
+{block name="title"}交易管理{/block}
+
+{block name="cssjs"}
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/padapi/common.js?v={#cssjs_version#}"></script>
+<script src="{#YXP_STATIC_DOMAIN#}/js/yxp_chosen/yxp_chosen.jquery.js?v={#cssjs_version#}" type="text/javascript"></script>
+<link href="{#YXP_STATIC_DOMAIN#}/js/yxp_chosen/yxp_chosen.jquery.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="menu"}
+{include file="admin/_sub_nav.html"}
+{/block}
+
+{block name="body"}
+<style type="text/css">
+    .fordheader{
+        width: 0px;
+    }
+    #pre_choose{ cursor: pointer;color: blue; width: 160px; height: 30px;line-height:30px;text-align: center; border: 1px solid #d8d8d8;}
+
+</style>
+<div id="mcon">
+    <div id="mcentent" class="cf">
+        <div class="fqleftBg">
+
+            <!--系统通知左侧开始-->
+            <div class="fqleft">
+             <ul>
+               <li><a href="javascript:void(0)" class="hover">发拍纪录</a></li>
+             </ul>
+            </div>
+            <!--发起拍左侧卖开始-->
+            <!--发起拍卖右侧侧开始-->
+            <div class="fqright">
+                <div class="fptitle">
+                    <ul class="fptitle_title">
+                        <li>
+                            <a href="/admin/auctionlist/?status=1" {if $get.status eq '' || $get.status eq 1}class="current"{/if}>拍卖中</a>
+                        </li>
+                        <li>
+                            <a href="/admin/auctionlist/?status=3" {if $get.status eq 3}class="current"{/if}>成交</a>
+                        </li>
+                        <li>
+                          <a href="/admin/auctionlist/?status=2" {if $get.status eq 2}class="current"{/if}>流拍</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="fqsearch2">
+                    <form action="" method="get" id="auctionlist_form">
+                    <input type="hidden" name="status" id="status" value="{$get.status|default:0}">
+                    <ul>
+                        <li style="width:100%">
+                            <em>车系车型：</em>
+                            <span id="car_name_div">
+                            <input type="hidden" id="ford_car_name" name="ford_car_name" value="{$ford.trim_name}">
+                            <input type="hidden" id="ford_brand_id" name="ford_brand_id" value="{$ford.brand_id}">
+                            <input type="hidden" id="ford_series_id" name="ford_series_id" value="{$ford.series_id}">
+                            <input type="hidden" id="ford_trim_id" name="ford_trim_id" value="{$ford.trim_id}">
+                            </span>
+                      <span id="ford_chosen_target" style="cursor:pointer;color:blue;">
+                        {if $ford}
+                            <span style="cursor:pointer;color:blue">{$ford.serial_name} {$ford.model_name} {$ford.trim_name}</span>
+                        {else}
+                            <input type="text" id="pre_choose" value="请选择车型" class="validate[minSize[10]]" readonly >
+                        {/if}
+                        </span>
+                        </li>
+                        <li>
+                           <em>车牌号：</em>
+                            <input name="no" id="no" type="text" class="fqvinm" style="height:auto;width: 100px;" value="{$get.no|escape:'html'}" />
+                        </li>
+                        <li>
+                           <em>VIN码：</em>
+                           <input name="vin" id="vin" type="text" class="fqvinm" value="{$get.vin|escape:'html'}" style="width: 100px;"/>
+                        </li>
+                        <li style="width: 320px;">
+                        <em>地区：</em>
+                              <span class="manager_pro"><select name="provinceid" id="provinceid"></select></span>
+                              <span class="manager_city"><select class="cityid" name="cityid" disabled="disabled"></select></span>
+                              <script type="text/javascript">
+                              var list = new Array();
+                              {if $get.provinceid}
+                                list['provinceid'] = '{$get.provinceid}';
+                              {/if}
+                              {if $get.cityid}
+                                list['cityid'] = '{$get.cityid}';
+                              {/if}
+                            </script>
+                            </li>
+                            <li class="search-li">
+                            <a href="javascript:auctionlist_search()" class="search-btn">搜索</a>
+                            <a href="javascript:reset_search()" style="margin-left:70px" class="search-btn">重置</a>
+                            </li>
+                            <li>
+                            <a href="/admin/auctionlist/?type=export&series_id={$get.series_id}&trim_id={$get.trim_id}&no={$get.no}&vin={$get.vin}&area={$get.area_id}&provinceid={$get.provinceid}&cityid={$get.cityid}&status={$get.status}" class="excel-border" target="_blank"><img src="{#YXP_STATIC_DOMAIN#}/chrysler/images/excle1.jpg"></a>
+                        </li>
+                    </ul>
+                </div>
+            <div>
+
+            <div class="fqbox2">
+                <div class="fqboxfblist">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr class="tr-h">
+                            <td>车辆信息</td>
+                            <td width="80">拍品编号</td>
+                            <td width="80">VIN</td>
+                            <td width="80">车牌号</td>
+                            
+                            {if $get.status eq 2}
+                                <td width="120">上次保留价(万元)</td>
+                                <td width="100">流拍时间</td>
+                            {else}
+                                <td width="100">保留价(万元)</td>
+                            {/if}
+                            {if $get.status eq 1}
+                                <td width="120">当前最高价(万元)</td>
+                                <td width="120">竞价开始时间(万元)</td>
+                            {/if}
+                            {if $get.status eq 3}
+                                <td width="100">成交价(万元)</td>
+                                <td width="100">合手价(万元)</td>
+                            {/if}
+                            {if $get.status > 0}
+                                <td width="100" class="last">操作</td>
+                            {else}
+                                <td width="100" class="last">竞拍结束时间</td>
+                            {/if}
+                        </tr>
+                        {if !empty($publish)}
+                            {foreach $publish as $k => $v}
+                            <tr class='{cycle values=",tr-odd"}'>
+                                <td class="fqboxfbbg033" title="{$v.car_name}" style="text-align:center">
+                                    {if $v.source_from lt 3}
+                                        <a href="{$dict_domain_chake}/mobile/ReportInfo.aspx?taskId={$v.chake_task_id}" target="_blank" class="blue">{$v.car_name}</a> 
+                                    {else}
+                                        <a href="{$dict_domain_chake}/Mobile/ReportNew.aspx?CarId={$v.hy_carid}" target="_blank" class="blue">{$v.car_name}</a> 
+                                    {/if}
+                                </td>
+                                <td class="fqboxfbbg033" style="text-align:center">{$v.pn|default:'--'}</td>
+                                <td class="fqboxfbbg033" style="text-align:center">{$v.vin|default:'--'}</td>
+                                <td class="fqboxfbbg033" style="text-align:center">{$v.no|default:'--'}</td>
+                                <td class="fqboxfbbg033" style="text-align:center">{$v.price}</td>
+                                {if $v.status eq 1}
+                                    <td class="fqboxfbbg033" style="text-align:center">
+                                        {if $v.top_price eq "0.00" and $v.pre_bid_price eq "0.00"}
+                                            --
+                                        {elseif $v.top_price gt $v.pre_bid_price}
+                                            {$v.top_price}
+                                        {else}
+                                            {$v.pre_bid_price}
+                                        {/if}
+                                    </td>
+                                    <td class="fqboxfbbg033" style="text-align:center">
+                                        {$v.bid_time|substr:0:4}-{$v.bid_time|substr:4:2}-{$v.bid_time|substr:6:2} {$v.bid_time|substr:8:2}:{if $v.order lt 6}0{($v.order-1)*2}{else}{($v.order-1)*2}{/if}:00
+                                    </td>
+                                {/if}
+                                {if $v.status eq 3}
+                                    <td class="fqboxfbbg033" style="text-align:center">{$v.top_price}</td>
+                                    <td class="fqboxfbbg033" style="text-align:center">{$v.total_price}</td>
+                                {/if}                                
+                                {if $v.status eq 2}
+                                <td class="fqboxfbbg033" style="text-align:center">     {$v.end_time|date_format:'%Y-%m-%d %H:%M:%S'}
+                                </td>
+                                {/if}
+                                <td align="center" class="fqboxfbbg05">
+                                {if $v.status eq 2}
+                                    <p class="p5">
+                                    
+                                        <a href="/admin/auction/import/?car_id={$v.carid}&hy_carid={$v.hy_carid}&auc_type=re" target="" class="blue">重新发拍</a>
+                                        
+                                    
+                                    </p>
+                                {/if}
+                                {if $get.status != 0 && $get.status != 2}
+                                    <p class="p5">
+                                       <a href="/admin/auctionlist/publish_bid/?pid={$v.publishid}" class="blue fancybox fancybox.iframe" target="_blank">出价记录</a>
+                                    </p>
+                                {else}
+                                    
+                                {/if}
+                                </td>
+                            </tr>
+                            {/foreach}
+                        {else}
+                            <tr>
+                                <td colspan="6" style="text-align:center">
+                                    <p class="p5">暂无数据</p>
+                                </td>
+                            </tr>
+                        {/if}
+                    </table>
+                </div>
+        </div>
+    </div>
+    <div class="go-page-r">{$links}</div>
+      <!--发起拍卖右侧侧结束-->
+    </div>
+</div>
+</div>
+<SCRIPT>
+function changetxt(dom){
+    if($(dom).val()){
+        $('#yxp_trim_select').removeClass("hide");
+    }else{
+        $('#yxp_trim_select').addClass("hide");
+    }  
+}
+function auctionlist_search(){
+    var url = '/admin/auctionlist/?status='+$('#status').val(),
+    provinceid = $('#provinceid').val(),
+    cityid = $('#cityid').val(),
+/*
+    brand = $('#yxp_serial_select').val(),
+    model = $('#yxp_model_select').val(),
+    trim = $('#yxp_trim_select').val(),
+    car_name = $("#ford_car_name").val();*/
+
+    brand = $('#ford_brand_id').val(),
+    model = $('#ford_series_id').val(),
+    trim = $('#ford_trim_id').val(),
+
+    no = $('#no').val(),
+    vin = $('#vin').val(),
+    area = $('#yxp_area_select').val(),
+    prov = $('#yxp_prov_select').val(),
+    city = $('#yxp_city_select').val();
+    car_type = $('#car_type').val();
+
+    end_time_1 = $('#end_time_1').val();
+    end_time_2 = $('#end_time_2').val();
+
+    if(brand != '') {
+        brand = brand.split(',');
+        url += '&brand_id='+brand[0];
+    }
+    if(model != '') {
+        model = model.split(',');
+        url += '&series_id='+model[0];
+    }
+    if(trim != '') {
+      	trim = trim.split(',');
+      	url += '&trim_id='+trim[0];
+    }
+    
+    url += provinceid ? '&provinceid='+provinceid : '';
+    url += cityid ? '&cityid='+cityid : '';
+    url += no ? '&no='+no : '';
+    url += vin ? '&vin='+vin : '';
+    url += area ? '&area_id='+area.split(',')[0] : '';
+    url += prov ? '&prov_id='+prov.split(',')[0] : '';
+    url += city ? '&city_id='+city.split(',')[0] : '';
+    url += car_type ? '&car_type=' + car_type : '';
+    url += end_time_1 ? '&end_time_1=' + end_time_1 : '';
+    url += end_time_2 ? '&end_time_2=' + end_time_2 : '';
+    location.href = url;
+}
+
+$(function(){
+    get_getpro(list);
+    
+    //车系 车型选择
+    var apiurl = 'http://padapi.youxinpai.com';
+    var settings = {
+        id:'yxp_chosen_target',
+        enable:true,
+        cancel:true,
+        footbar_btn_callback:function(event,seltext){
+        if(cho_order.get_value(0) && cho_order.get_value(1) && cho_order.get_value(2)) {
+
+            $('#ford_brand_id').val( cho_order.get_value(0) );
+            $('#ford_series_id').val( cho_order.get_value(1) );
+            $('#ford_trim_id').val( cho_order.get_value(2) );
+            var data = cho_order.get_data(2);
+            var year = data.fld_ccsj;
+            seltext =   cho_order.get_text(0) + " "+ cho_order.get_text(1) + " "+ cho_order.get_text(2);
+            $('#ford_car_name').val( seltext );
+            event.data.target.text(seltext);
+        }            
+            },
+            items:[
+                    {
+                        id:'yxp_serial_select',
+                        dataurl:apiurl+'/api_car/cxk_brand_series_mode/?type=brand&jsoncallback=?&',
+                        width:180,
+                        valuefield:'iautos_brand_id',
+                        showfield:'iautos_brand_name',
+                        defaulthtml:'请选择品牌'
+                    },
+                    {
+                        id:'yxp_model_select',
+                        dataurl:apiurl+'/api_car/cxk_brand_series_mode/?type=series&jsoncallback=?&',
+                        group:true,
+                        width:180,
+                        valuefield:'iautos_series_id',
+                        showfield:'iautos_series_name',
+                        defaulthtml:'请先选择车系'
+                    },
+                    {
+                        id:'yxp_trim_select',
+                        dataurl:apiurl+'/api_car/cxk_brand_series_mode/?type=mode&jsoncallback=?&',
+                        width:400,
+                        group:true,
+                        valuefield:'iautos_mode_id',
+                        showfield:'cxk_mode_name',
+                        defaulthtml:'请先选择车型'
+                    }
+            ]
+        };
+        //初始化品牌车系车型
+        cho_order = $("#ford_chosen_target").yxp_chosen(settings);
+
+});
+
+function reset_search()
+{
+  $('#auctionlist_form input[type=text],#auctionlist_form input[type=hidden],select').val('');
+  $('#status').val('{$get.status}');
+  $('#ford_chosen_target').html('<input type="text" id="pre_choose" value="请选择车型" class="validate[minSize[10]]" readonly >');
+}
+</SCRIPT>
+{/block}

@@ -1,0 +1,36 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查看消息</title>
+<link type="text/css" rel="stylesheet" href="http://img.youxinpai.com/chrysler/css/common.css?v=20140213" />
+<link type="text/css" rel="stylesheet" href="http://img.youxinpai.com/chrysler/css/chrysler.css" />
+<style>
+
+#mcentent h3 { line-height:40px;height:40px; }
+.mbody { text-indent:25px; }
+
+</style>
+</head>
+<body>
+{if $message_info}
+<div id="mcentent" class="cf">
+	<center><h2>{$message_info.title|escape:'html'}</h2></center>
+	<br/>
+	<div class="mbody" style="font-size: 15px;">
+	{$message_info.content|escape:'html'}
+	</div>
+</div>
+<div style="text-align:center;"><input type="button" id="depositButton" onclick="javascript:parent.jQuery.fancybox.close();" class="base-button cpgreen" value="确定" />
+</div>
+{else}
+<div id="mcentent" class="cf">
+	<div class="mbody">
+		该消息已被管理员删除！
+	</div>
+</div>
+<div style="text-align:center;"><input type="button" id="depositButton" onclick="javascript:parent.location.reload()" class="base-button cpgreen" value="确定" />
+</div>
+{/if}
+</body>
+</html>

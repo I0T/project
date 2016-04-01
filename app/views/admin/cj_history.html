@@ -1,0 +1,38 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="ProgId" content="Excel.Sheet"/>
+ </head>
+ <body>
+<table border="1">
+<tr>
+<th x:str>序号</th>
+<th x:str>车辆名称</th>
+<th x:str>拍品编号</th>
+<th x:str>车牌号</th>
+<th x:str>VIN</th>
+<th x:str>经销商名称</th>
+<th x:str>发布时间</th>
+<!-- <th x:str>开始时间</th> -->
+<th x:str>出价时间</th>
+<th x:str>出价金额(万元)</th>
+<th x:str>出价方式</th>
+</tr>
+{foreach $data as $a}
+<tr>
+	<td x:int>{$a.id}</td>
+	<td x:str>{$a.car_name}</td>
+	<td x:str>{$a.pn}</td>
+	<td x:str>{$a.no}</td>
+	<td x:str>{$a.vin}</td>
+	<td x:str>{$a.dealer_name}</td>
+	<td x:str>{$a.pcreatetime|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+	<!-- <td x:str>{$a.pstart_time|date_format:"%Y-%m-%d %H:%M:%S"}</td> -->
+	<td x:str>{$a.bcreatetime|date_format:"%Y-%m-%d %H:%M:%S"}</td>
+	<td x:int>{$a.price}</td>
+	<td x:str>{$a.type}</td>
+</tr>
+{/foreach}
+</table>
+ </body>
+</html>

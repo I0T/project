@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <span>现在时间：{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}</span>
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Sql:</td>
+                    <td><textarea style="width:300px;height:400px;" name="sql"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="执行"></td>
+                    </tr>
+            </table>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,123 @@
+{extends file="main.html"}
+{block name="title"}广汽菲克二手车竞价平台{/block}
+
+{block name="cssjs"}
+<link type="text/css" rel="stylesheet" href="/css/jquery.mSimpleSlidebox.css?v={#cssjs_version#}" />
+<script src="/js/jquery.mSimpleSlidebox.js?v={#cssjs_version#}" type="text/javascript"></script>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery-ui-1.10.3.custom.min.js?v={#cssjs_version#}" ></script>
+{/block}
+{block name="head"}{/block}
+{block name="body"}
+<div class="wrap">
+   <div class="w1000">
+      <div class="login_t">
+          <p><img src="{#YXP_STATIC_DOMAIN#}/chrysler/images/logo.png"></p>
+      </div>
+      <div class="login_c">
+         <div class="c_l fl">
+            <div class="banner_index">
+               <ul class="banner_wrap" id="banner_index">
+                   <li><img src="{#YXP_STATIC_DOMAIN#}/chrysler/images/car.jpg" style="width:695px;height: 420px;" ></li>
+               </ul>
+               <div class="indexBanner_num" id="index_numIco"></div>
+             </div>
+         </div>
+         <form action="" method="post">
+         <div class="c_r fr">
+            <h1>登录竞价系统</h1>
+            <div class="reg-item"><em>账号:</em>
+               <input type="text" class="txt" name="name" value="{$name}"/>
+            </div>
+            <div class="reg-item"><em>密码:</em>
+               <input type="password" class="txt" name="password" value="{$password}" />
+            </div>
+            <div class="reg-item">
+              <label>
+              <em>验证码:</em>
+               <span><input type="text" class="txt2" name="txtCheckCode" id="txtCheckCode"/>
+               </span>
+               </label>
+                <span>
+                  <img src="/captcha/" id="imgCheckB" style="cursor:pointer" />
+                </span>
+                  <span><a href="javascript:refresh_captcha();">看不清？换一张</a></span>
+            </div>
+            <div id = "notice" style="color:red;" class="reg-item">{$notice}</div>
+            <div class="reg-item"><input type="submit" id="Submit1" style="padding:0px;text-shadow:none;" class="btn" value="登录" /></div>
+         </div>
+      </div>
+      </form>   
+   </div>
+</div>
+<!--<script src="{#YXP_STATIC_DOMAIN#}/js/yxp2014/banner_index.js?v={#cssjs_version#}" type="text/javascript"></script>
+<script type="text/javascript">
+var ShowPre1 = new ShowPre({ box:"banner_index",Pre:"banner_index_pre",Next:"banner_index_next",numIco:"index_numIco",loop:1,auto:1 });
+</script> -->
+<!--[if lte IE 6]>
+<script src="{#YXP_STATIC_DOMAIN#}/js/yxp2014/DD_belatedPNG.js?v={#cssjs_version#}" type="text/javascript"></script>
+<![endif]-->       
+<script>
+//验证码
+var flag = true;//第一次进入
+var randomCode = 's'+ new Date().getMilliseconds() + 1;
+
+function refresh_captcha() { 
+$('#imgCheckB').prop('src', '/captcha/index/?code='+randomCode+'&r='+new Date().getMilliseconds()); 
+}
+
+$(document).ready(function(){
+	$(".slidebox").mSlidebox(); //焦点图JS代码
+	$('#imgCheckB').click(function(){ refresh_captcha();});
+    $('#notice').css('text-align','center');
+    $("input[type=text].txt").focus();
+    $("input[type=submit]").click(function(){
+        var name = $("input[type=text].txt").val();
+        var password = $("input[type=password]").val();
+        var code = $("#txtCheckCode").val();
+        if(! name) {
+            $('#notice').text('* 用户名不能为空!');
+            $("input[type=text].txt").focus();
+            return false;
+        } else if(! password) {
+            $('#notice').text('* 密码不能为空!');
+            $("input[type=password]").focus();
+            return false;
+        } else if(! code) {
+            $('#notice').text('* 请输入验证码!');
+            $("#txtCheckCode").focus();
+            return false;
+        }
+
+        $.post('/user/login/',{ txtCheckCode:code,random:randomCode,password:password,name:name },function(data){
+          
+          if(data.status==1)
+          {
+            $("#txtCheckCode").val('');
+            $("#txtCheckCode").focus();
+            refresh_captcha();
+          }
+          else if(data.status==2)
+          {
+            $("input[type=password]").val('');
+            $("#txtCheckCode").val('');
+            $("input[type=password]").focus();
+            refresh_captcha();
+          }
+          else if(data.status==3)
+          {
+            window.location.href='index/index';
+          }
+          
+          $('#notice').text(data.msg);
+        
+      },"json");
+
+      return false;
+
+   });
+   
+});
+refresh_captcha();//一进入就更新验证码
+
+</script>
+{/block}

@@ -1,0 +1,86 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="ProgId" content="Excel.Sheet"/>
+ </head>
+ <body>
+
+<table width="100%" border="1" cellspacing="0" cellpadding="0">
+<tr class="tr-h">
+  <td x:str>车辆信息</td>
+  <td width="100" x:str>拍品编号</td>
+  <td width="100" x:str>VIN</td>
+  <td width="100" x:str>车牌号</td>
+  {if $get.status == 3}
+  <td width="100" x:str>成交日期</td>
+  {/if}
+  {if $get.status == 2}
+  <td width="80">流拍日期</td>
+  {/if}
+  {if $get.status == 1}
+  <td width="80">竞价日期</td>
+  {/if}
+  {if $get.status != 4 && $get.status != 2 && $get.status !=1}
+    {if $get.status}
+    <td width="100">成交价(万元)</td>
+    {else}
+    <td width="100" x:str>我的投标(万元)</td>
+    <td width="100" x:str>我的竞价(万元)</td>
+    <td width="100" x:str>车辆状态</td>
+    {/if}
+    {if $get.status == 3}
+    <td width="100" x:str>合手价(万元)</td>
+    {/if}
+  {/if}
+  {if $get.status == 1}
+    <td width="100" x:str>起拍价(万元)</td>
+  {/if}
+  
+</tr>
+{if $publish_data}
+{foreach $publish_data as $p}
+<tr class='{cycle values=",tr-odd"}'>
+  {if $get.status != 4}
+    <td class="fordtd" style="width:400px">{$p.car_name}</td>
+  {else}
+    <td class="fordtd" style="width:400px">{$p.car_name}</td>
+  {/if}
+  <td x:str class="fordtd" style="text-align:center">{$p.pn|default:'--'}</td>
+  <td class="fordtd" style="text-align:center">{$p.vin|default:'--'}</td>
+  <td class="fordtd" style="text-align:center">{$p.no|default:'--'}</td>
+  {if $get.status == 3 || $get.status == 2 || $get.status == 1}
+  <td x:str class="fordtd" style="text-align:center" >
+    {$p.end_time|date_format:"%Y-%m-%d %H:%M:%S"}
+  </td>
+  {/if}
+  {if $get.status != 4 && $get.status != 2 && $get.status != 1}
+    {if $get.status}
+    <td class="fordtd" align="center">{$p.price}</td>
+    {else}
+    <td class="fordtd" align="center">{$p.bid_price}</td>
+    {/if}
+    {if $get.status == 3 }
+    <td class="fordtd" align="center">{$p.total_price}</td>
+    {/if}
+  {/if}
+  {if $get.status == 1} 
+  <td class="fordtd" align="center">{$p.start_price}</td>
+  {/if}
+  {if $get.status == '' || $get.status == 0}
+    <td class="fordtd" align="center">{$p.bidding_price}</td>
+    <td class="fordtd" align="center">
+    {if $p.status == 0}还未开始{/if}
+    {if $p.status == 2}流拍{/if}
+    {if $p.status == 3}成交{/if}
+    {if $p.status != 1}<br />{/if}<!--竞拍中 -->
+    {$p.type}
+    </td>
+  {/if}
+</tr>
+{/foreach}
+{else}
+  <tr><td colspan="8" style="text-align:center;">暂无数据</td></tr>
+{/if}
+</table>
+ </body>
+</html>

@@ -1,0 +1,76 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="ProgId" content="Excel.Sheet"/>
+ </head>
+ <body>
+<table border="1">
+<tr>
+<th x:str>序号</th>
+<th x:str>车辆信息</th>
+<th x:str>拍品编号</th>
+<th x:str>VIN</th>
+<th x:str>车牌号</th>
+{if $get.status eq 2}
+    <th x:str>上次保留价</th>
+    <th x:str>流拍时间</th>
+{else}
+    <th x:str>保留价(万元)</th>
+{/if}
+{if $get.status eq 1}
+    <th x:str >当前最高价(万元)</th>
+{/if}
+{if $get.status eq 3}
+    <th x:str >成交价(万元)</th>
+    <th x:str >合手价(万元)</th>
+    <th x:str >成交买家经销商</th>
+    <th x:str >成交时间</th>
+{/if}
+{if $get.status eq 1}
+    <th x:str>竞价开始时间</th>
+{/if}
+{if $get.status eq 0}
+    <th x:str>竞拍结束时间</th>
+{/if}
+</tr>
+{foreach $data as $v}
+<tr> 
+	<td>{$v.id}</td>
+	<td x:str>{$v.car_name}</td>
+	<td x:str>{$v.pn|default:'--'}</td>
+	<td x:str>{$v.vin|default:'--'}</td>
+        <td>{$v.no|default:'--'}</td>
+	<td x:str>{$v.price}</td>
+	{if $v.status eq 1}
+	    <td x:str>
+		{if $v.top_price eq "0.00" and $v.pre_bid_price eq "0.00"}
+            --
+        {elseif $v.top_price gt $v.pre_bid_price}
+            {$v.top_price}
+        {else}
+            {$v.pre_bid_price}
+        {/if}
+	   	</td>
+	{/if}
+	{if $v.status eq 3}
+	    <td>{$v.top_price}</td>
+	    <td x:str>{$v.total_price}</td>
+	    <td x:str>{$v.buyer_dealername}</td>
+	    <td x:str>{$v.buyer_dealtime}</td>
+	{/if}
+	{if $get.status eq 1}
+		<td x:str align="center" class="fqboxfbbg05">
+			{$v.bid_time|substr:0:4}-{$v.bid_time|substr:4:2}-{$v.bid_time|substr:6:2} {$v.bid_time|substr:8:2}:{if $v.order lt 6}0{($v.order-1)*2}{else}{($v.order-1)*2}{/if}:00
+		    <!-- {$v.start_time|date_format:'%Y-%m-%d %H:%M:%S'} -->
+		</td>
+	{/if}
+	{if $get.status eq 0 or $get.status eq 2}
+		<td x:str align="center" class="fqboxfbbg05">
+		    {$v.end_time|date_format:'%Y-%m-%d %H:%M:%S'}
+		</td>
+	{/if}
+</tr>
+{/foreach}
+</table>
+ </body>
+</html>

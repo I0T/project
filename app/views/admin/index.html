@@ -1,0 +1,45 @@
+{extends file="main.html"}
+{block name="title"}厂商首页{/block}
+<style>
+.mmenu {
+    width: 600px;
+}
+.mmenu a {
+    width: 90px;
+}
+</style>
+{block name="cssjs"}
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.fancybox.pack.js?v={#cssjs_version#}"></script>
+<link rel="stylesheet" href="{#YXP_STATIC_DOMAIN#}/css/cp/jquery.fancybox.css?v={#cssjs_version#}" type="text/css" media="screen" />
+{/block}
+
+{block name="menu"}
+{include file="admin/_sub_nav.html"}
+{/block}
+{block name="body"}
+<div class="w1000">
+  		<div class="m_news_user cf">
+  			<div class="m_news fr">
+  				<h1><i class="icon-news"></i>最新消息</h1>
+	  			{include file="_message_list.html"}
+  			</div>
+	<!--最新消息结束-->
+	<!--用户信息开始-->
+	<div class="m_user fl">
+			<h1><i class="icon-person"></i>用户消息</h1>
+			<div class="icon-pic"></div>
+			<ul>
+				<li class="user-center">{$result.role}</li>
+				<li><span>联系人：</span>{$result.name}</li>
+				<li><span>联系电话：</span>{$result.mobile}</li>
+			</ul>
+		</div>
+	</div>
+	<!--用户信息结束-->
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+$(".fancybox").fancybox();
+});
+</script>
+{/block}

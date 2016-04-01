@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录页</title>
+<link type="text/css" rel="stylesheet" href="/css/jquery.mSimpleSlidebox.css" />
+<!-- <script type="text/javascript" src="http://img.youxinpai.com/js/cp/jquery.js?v={#cssjs_version#}"></script> -->
+<link type="text/css" rel="stylesheet" href="http://img.youxinpai.com/jaguar/css/common.css?v={#cssjs_version#}" />
+<!-- <script src="/js/jquery.mSimpleSlidebox.js?v={#cssjs_version#}" type="text/javascript"></script> -->
+<!-- <script type="text/javascript" src="http://img.youxinpai.com/js/cp/jquery-ui-1.10.3.custom.min.js?v=20140213" ></script>
+ -->
+<link type="text/css" rel="stylesheet" href="http://img.youxinpai.com/css/qirui/qiruiCar.css" />
+<script type="text/javascript" src="http://img.youxinpai.com/js/lossCar/jquery.1.5.2.min.js"></script>
+<script type="text/javascript" src="/js/common.js"></script>
+<script type="text/javascript">
+$(function(){
+    	var $input = $(".input_txt");	
+    	$input.each(function(){
+    		var $this = $(this);
+    		$this.bind({
+    			"focusin" : function(){
+    				$this.addClass("txt_off");
+    			},
+    			
+    			"focusout" : function(){
+    				if( $this.val() == "" ){
+						$this.removeClass("txt_off");    					
+    				}
+    			},
+    			"change" : function(){
+    				$input.each(function(){
+    					var $self = $(this);
+    					if( $self.val() != "" ){
+							$this.addClass("txt_off");    					
+	    				}
+    				});
+    			}
+    		});		
+    	});
+});	
+
+$(document).ready(function(){
+	$("#loginid").focus();
+});
+</script>   
+</head>
+<body>
+<div class="wrap">
+   <div class="w1000">
+      <div class="login_t">
+          <p><img src="http://img.youxinpai.com/jaguar/images/logo.gif"></p>
+      </div>
+      <div class="login_c">
+         <div class="c_l fl">
+            <div class="banner_index">
+               <ul class="banner_wrap" id="banner_index">
+                  <li><img src="http://img.youxinpai.com/jaguar/images/car_1.jpg"></li>
+                  <li><img src="http://img.youxinpai.com/jaguar/images/car_1.jpg"></li>
+               </ul>
+               <div class="indexBanner_num" id="index_numIco"></div>
+             </div>
+         </div>
+         <div class="c_r fr">
+         	<form action="/user/login/" method="POST">
+            <h1>登录竞价系统</h1>
+            <div class="reg-item"><em>账号:</em>
+               <input type="text" name="name" class="txt" />
+            </div>
+            <div class="reg-item"><em>密码:</em>
+               <input type="password" name="password" class="txt" />
+            </div>
+            <div class="reg-item"><em>验证码:</em>
+               <span><input type="text" name="txtCheckCode" class="txt2" /></span> 
+               <span><img src="/captcha/" id="imgCheckB" /></span><span><a href="javascript:refresh_captcha();">看不清？换一张</a></span>
+            </div>
+            <div class="reg-item"><input type="submit" value="登录" class="btn"></div>
+         </div>
+      </div>
+                
+      <div class="login_b">
+            CopyRight © 2014 优信互联 All Rights Reserved 版权所有 优信互联（北京）信息技术有限公司<br>
+经营许可证编号：京ICP证120819号；公安备案号码：京公网安备110105014857；
+      </div>
+   </div>
+</div>
+<script src="http://img.youxinpai.com/js/yxp2014/banner_index.js" type="text/javascript"></script>
+<script type="text/javascript">
+var ShowPre1 = new ShowPre( { box:"banner_index",Pre:"banner_index_pre",Next:"banner_index_next",numIco:"index_numIco",loop:1,auto:1 } );
+</script>
+<!--[if lte IE 6]>
+<script src="http://img.youxinpai.com/js/yxp2014/DD_belatedPNG.js" type="text/javascript"></script>
+<![endif]-->       
+</body>
+</html>
+
+<script>
+//验证码
+function refresh_captcha() { $('#imgCheckB').prop('src', '/captcha/?r='+new Date()); }
+$(document).ready(function(){
+	$(".slidebox").mSlidebox(); //焦点图JS代码
+	$('#imgCheckB').click(function(){ refresh_captcha(); });
+});
+</script>
+
+
+
+

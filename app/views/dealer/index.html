@@ -1,0 +1,47 @@
+{extends file="main.html"}
+{block name="title"}买家首页{/block}
+
+{block name="menu"}
+{include file="dealer/_sub_nav.html"}
+{/block}
+
+{block name="cssjs"}
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.fancybox.pack.js?v={#cssjs_version#}"></script>
+<link rel="stylesheet" href="{#YXP_STATIC_DOMAIN#}/css/cp/jquery.fancybox.css?v={#cssjs_version#}" type="text/css" media="screen" />
+<style type="text/css">
+.tableblack{ width:500px; border: 1px solid #000; margin: 5px auto;}
+.tableblack td{ border:1px #000 solid; border-right:none; border-top:none; text-align: center;}
+.green{ background-color: #0B0;}
+</style>
+{/block}
+
+{block name="body"}
+    <div class="w1000">
+        <!--最新消息开始-->
+        <div class="m_news_user cf">
+          <div class="m_news fr">
+          <h1><i class="icon-news"></i>最新消息</h1>
+          {include file="_message_list.html"}
+          </div>
+        
+        <!--最新消息结束-->
+        <!--用户信息开始-->
+        <div class="m_user fl">
+          <h1><i class="icon-person"></i>用户消息</h1>
+          <div class="icon-pic"></div>
+            <ul>
+              <li class="user-center">{$dealer_data.role}</li>
+              <li><span>联系人：</span>{$dealer_data.user_name}</li>
+              <li><span>联系方式：</span>{$dealer_data.user_mobile}</li>
+            </ul>
+        </div>
+        <!--用户信息结束-->
+        </div>
+    </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+$(".fancybox").fancybox();
+});
+</script>
+{/block}

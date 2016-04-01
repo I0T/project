@@ -1,0 +1,207 @@
+
+/*
+ * Since: 	2012-5-28
+ * Desc:	show check point CSS file
+ * author:  zls
+ */
+
+/* style for show check point begin -> */
+
+
+
+
+
+
+.waiguanbg{
+	width:422px;  
+	height:617px; 
+	text-align:center; 
+	background:url(/mobile/local/images/carouter1.jpg) no-repeat center; 
+	position:relative;
+}
+
+#waiguanbg li{
+	position:absolute;
+	width:30px;
+	height:30px;
+	line-height: 30px;
+	list-style-type: none;
+/*	opacity:0.3;*/
+}
+
+.interiorbg{
+	width:422px;  
+	height:617px; 
+	text-align:center; 
+	background:url(/mobile/local/images/upholstery.png) no-repeat center; 
+	background-size:contain;
+	position:relative;
+}
+
+.interiorbg li{
+	position:absolute; 
+	width:30px;
+	height:30px;
+	line-height: 30px;
+	list-style-type: none;
+/*	opacity:0.3;*/
+}
+
+.skeletonbg{
+	width:422px;  
+	height:617px; 
+	text-align:center; 
+/*	background:url(../images/upholstery.png) no-repeat center; */
+	background-size:contain;
+	position:relative;
+}
+
+.flag{
+	color: #fff;
+	background:url(/mobile/local/images/flag_skeleton.png) no-repeat center; 
+}
+
+.div_waiguan{
+	position:relative;
+}
+
+#waiguan .leftWrap{
+	position:absolute;
+	top:10px;
+	left:0px;
+	width: 200px;
+}
+
+#waiguan .rightWrap{
+	position:absolute;
+	top:10px;
+	right:0;
+	width: 200px;
+}
+
+.marginRight20{
+	margin-right:20px;
+}
+
+.appearanceListWrap{
+	width:420px;
+	height:auto;
+	position:absolute;
+	top:130px;
+	left:20px;
+}
+
+.borderLT{
+	border-top:1px #bfbfbf solid;
+	border-left:1px #bfbfbf solid;
+}
+
+.borderRT{
+	border-top:1px #bfbfbf solid;
+	border-right:1px #bfbfbf solid;
+}
+
+.width283{
+	width:282px!important;
+}
+
+.top10{
+	top:10px;
+}
+
+.color8e0e0b{
+	color:#8e0e0b;
+	text-align:left;
+	margin-left:-10px;
+}
+
+.textalignleft{
+	text-align:left;
+	margin:6px 0 15px;
+}
+
+.sheetmetalWrap{
+	width:420px;
+	height:auto;
+	position:absolute;
+	top:10px;
+	left:20px;
+}
+
+.pointTableL{
+	width:125px;
+	float:left;	
+	height:40px;
+	line-height: 40px;
+	text-align:right;
+	padding-right: 10px;
+}
+
+.pointTableR{
+	width:284px;
+	float:right;
+	height:40px;	
+	line-height: 40px;
+	position:relative;
+}
+
+.weight{
+	font-weight:bold;
+}
+
+.fedfa6{
+	background-color:#fedfa6;
+}
+
+.bfbfbf{
+	border: 1px #bfbfbf solid;
+	border-bottom:0;
+}
+
+.leftb{
+	border-right: 1px #bfbfbf solid;
+	border-bottom: 1px #bfbfbf solid;
+}
+
+.bottom{
+	border-bottom: 1px #bfbfbf solid;
+}
+
+.width100{
+	width:100%;
+	float:left;
+	line-height: 46px;
+}
+
+#pointTableTitleLwrap, #pointTableTitleRwrap{
+	border-bottom:1px #bfbfbf solid;
+}
+
+#pointTableTitleLwrap .pointTableL, #pointTableTitleRwrap .pointTableL{
+	border-right:1px #bfbfbf solid;
+}
+
+#pointTableTitleLwrap div, #pointTableTitleRwrap div{
+	border:0;
+}
+
+.rightalign{
+	text-align:left;
+	text-indent:20px;
+}
+
+.checkImg{
+	width:85px;
+	height:27px;
+	background: url(/mobile/local/images/imgbtn.png) no-repeat center;;
+	position:absolute;
+	right:5px;
+	top:7px;
+}
+
+.info{
+	width:100%;
+	border-bottom:1px #bfbfbf solid;
+}
+
+/* style for show check point end -> */

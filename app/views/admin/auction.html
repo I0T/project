@@ -1,0 +1,43 @@
+{extends file="main.html"}
+{block name="title"}拍卖管理{/block}
+
+{block name="menu"}
+{include file="admin/_sub_nav.html"}
+{/block}
+
+{block name="body"}
+<div id="mcentent" class="cf">
+      <div class="fqleftBg">
+      <!--发起拍卖左侧开始-->
+      <div class="fqleft">
+       <ul>
+         <li><a href="javascript:void(0)" class="hover">新增拍卖</a></li>
+       </ul>
+      </div>
+      <!--发起拍左侧卖开始-->
+      <!--发起拍卖右侧侧开始-->
+      <style> .fqboxfh_li01 img,.fqboxfh_li02 img{ padding-left: 0px !important; }</style>
+      <div class="fqright fqbox">
+        <div class="fqboxfh"><!--<a href="main.html">返回</a>--></div>
+        <ul class="lead-in">
+          <!--<li class="fqboxfh_li01"><a href="/admin/auction/create/"><img src="{#YXP_STATIC_DOMAIN#}/chrysler/images/pmimg.gif" style="display: inline;"></a></li>-->
+          <li>
+              <h3>点击按钮导入查客检测车辆</h3>
+              <p>您可以选择已通过查客设备检测的车源作为拍品，进行补充信息并发布。</p>
+              <a href="/admin/auction/import/?page=1" class="lead-btn">
+                  查客系统导入
+              </a>
+          </li>
+          <li class="second">
+              <h3>点击按钮重新发布拍卖结束的车辆</h3>
+              <p>您可以选择优信拍拍卖结束且未成交车源作为拍品，进行重新发布。</p>
+              <a href="/admin/auctionlist/?status=2" class="lead-btn">
+                  重新发布流拍车辆
+              </a>
+          </li>
+        </ul>
+      </div>
+      <!--发起拍卖右侧侧结束-->
+    </div>
+   </div>
+{/block}

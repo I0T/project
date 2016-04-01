@@ -1,0 +1,212 @@
+<script src="/js/uploadify/jquery.uploadify.min.js?v={#cssjs_version#}" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="{#YXP_STATIC_DOMAIN#}/js/uploadify/uploadify.css?v={#cssjs_version#}">
+<link href="{#YXP_STATIC_DOMAIN#}/chrysler/css/common.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+<link href="{#YXP_STATIC_DOMAIN#}/css/project/faw/lossCar.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+<style>
+.hide{ display: none; }
+.red{ color:red; }
+</style>
+<div class="hide" id="fac_1">
+	<div class="fqboxfh"><em>价格及时间设置</em></div>
+	<div>
+		<p id="pp" class="fqboxzyqp fqsize"><em class="red">*</em><span class="fq-span">设置保留价格：</span>
+		<input name="price_1" id="price_1" type="hidden" class="fp validate[custom[integer]]" maxlength="1"/>&nbsp;
+		<input name="price_2" id="price_2" type="text" value="0" class="fp validate[custom[integer]]" maxlength="1"/>&nbsp;
+		<input name="price_3" id="price_3" type="text" value="0" class="fp validate[custom[integer]]" maxlength="1"/>&nbsp;
+		<input name="price_4" id="price_4" type="text" value="0" class="fp validate[custom[integer]]" maxlength="1"/>&nbsp;.
+		<input name="price_5" id="price_5" type="text" value="0" class="fp validate[custom[integer]]" maxlength="1"/>&nbsp;
+		<input name="price_6" id="price_6" type="text" value="0" class="fp validate[custom[integer]]" maxlength="1"/>
+		<input type="hidden" name="price" value="0" id="price">
+		<em style=" font-weight:normal">万元</em>
+		</p>
+		<p class="fqboxzyqp" style="margin-left:120px"><em class="red">重要提示：</em>保留价是你的出售底价</p>
+		<p class="fqboxzyqp fqsize">
+		<em class="red">*</em>
+		<span class="fq-span">起拍价：</span>
+        <input type="text" style="border: 1px solid #d8d8d8;padding:4px;width:60px;height: 18px;
+    line-height: 18px;text-align:center;font-size:14px;margin-left: 19px;" id="start_price" name="start_price" readonly>
+		</em>
+		<em style=" font-weight:normal" >万元</em>
+		<em class="red" style="font-weight:normal">系统会自动为你计算出起拍价</em>
+		</p>
+                
+        <!--
+		<p class="fqboxzyqp fqsize">
+		<em class="red">*</em>
+                发拍区域：&nbsp;&nbsp;&nbsp;&nbsp;{foreach from=$bidAreas item=bidArea key=k}<input type="radio" name="bid_area" value="{$k}">{$bidArea}&nbsp;&nbsp;&nbsp;&nbsp;{/foreach}
+		</p>
+        -->
+               
+		<p class="fqboxzyqp fqsize">
+		<em class="red">*</em>
+		<span class="fq-span">竞价开始时间：</span>
+                <input style="margin-left: 13px;" type="text" name="auction_day" id='choose_day' class="fqvinm2" readonly="true">
+		<select name="end_time" id="end_time">
+                    {section name=loop loop=24}
+                    <option value="{$smarty.section.loop.index}">{$smarty.section.loop.index}:00</option>
+                    {/section}
+		</select>
+		&nbsp;
+		</p>
+
+        <!--
+		{if $car.user.type==1}
+			<p class="fqboxzyqp fqsize" style="margin-bottom:14px">
+			<em class="red">*</em>
+			请选择发拍范围：
+			<em style="font-weight:normal">
+			{html_radios name="scope" options=$car.dict_scope class="validate[required]"}
+			&nbsp;</em>
+			</p>
+		{/if}
+        -->
+                
+	</div>
+	<p class="tac">
+		{if $hy_carid == 0}
+		<a  href="javascript:fac_step(6)" class="obtn" style="margin-right: 10px;">上一页</a>
+		{/if}
+		<a  href="javascript:fac_step(2)" class="obtn" style="margin-right: 10px;">下一页</a>
+        <a href="#" class="obtn bg-gray" onclick="javascript:window.history.go(-1);return false;">返回</a>
+	</p>
+</div>
+<script>
+//获取保留价
+function get_int(id) {
+	var ret = parseInt( $('#price_'+id).val() );
+	return isNaN(ret) ? 0 : ret;
+}
+//计算起拍价
+function f_start_rate(price) {
+
+	var random = Math.round( Math.random() * 10 ),
+		half = Math.round( random / 2 ),
+		rate = 0;
+	if(price <= 2) {
+		rate = 50 + random;
+	} else if(price <= 5) {
+		rate = 70 + random;
+	} else if(price <= 10) {
+		rate = 75 + random;
+	} else if(price <= 20) {
+		rate = 80 + half;
+	} else if(price <= 50) {
+		rate = 85 + half;
+	} else if(price <= 100) {
+		rate = 90 + half;
+	} else if(price > 100) {
+		rate = 100;
+	}
+        
+	return Math.round( price * rate ) / 100;
+}
+
+$('.fp').bind('keyup blur', function(event){
+
+    if($(this).val()=='')
+    { 
+      if(event.keyCode == 8 || event.keyCode == 46)
+      {
+      	if(pre_var == 0)
+        {
+          $(this).prev().focus();
+          return;
+        }
+        pre_var = 0;
+      }
+      if(event.keyCode !=8 && event.keyCode !=46)
+      {
+        $(this).val(pre_var);
+        var flag = 1;
+      }
+      
+    }
+	var p1 = get_int(1)*1000,
+	p2 = get_int(2)*100,
+	p3 = get_int(3)*10,
+	p4 = get_int(4),
+	p5 = get_int(5)*0.1,
+	p6 = get_int(6)*0.01;
+	var price = p1+p2+p3+p4+p5+p6;
+    price = parseFloat(price).toFixed(2);
+	var sprice = f_start_rate(price);
+	$('#start_price').val(sprice); //起拍
+	$('#start_price_span').html(sprice); //起拍
+	$('#price').val(price); //保留
+
+    if($(this).val() != '' && !isNaN($(this).val()))
+    { 
+      if(flag != 1)
+      { 
+        $(this).next().focus();
+      }
+    }
+});
+
+{literal}
+
+$(document).ready(function() {
+    $("#choose_day").datepicker({
+        minDate:0,
+        maxDate:4,
+        dateFormat:'yy-mm-dd',
+        onClose: function(dateText,inst){
+            if (inst.clickDate == dateText) {
+                return;
+            }
+            if (dateText == '') {
+                return;
+            }
+            inst.clickDate = dateText;
+            var date = new Date();
+            var str = '';
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            month = month >= 10 ? month : '0' + month;
+            day = day >= 10 ? day : '0' + day;
+            var dd = date.getFullYear() +'-'+ month + '-' + day;
+            for (var i=8; i<=19; i++) {
+                if (inst.clickDate === dd && i < date.getHours()+2) {
+                    continue;
+                }
+            str +='<option value="'+i+'">'+i+':00</option>';
+            }
+        
+            $('#end_time').html(str);
+     
+        },
+        beforeShow: function(dateText,obj){
+            var hour = (new Date).getHours();
+            if(hour > 17)
+            {
+                obj.settings.minDate = 1;//今天日期变灰
+            } 
+        },
+    });
+
+});
+
+{/literal}
+
+$('#pp input').focus(function(e)
+{
+    var val = $(this).val();
+    pre_var = val;
+    $(this).val('');
+});
+
+$('#pp input').blur(function(e)
+{
+    var val = $(this).val();
+    if(isNaN(val) || val=='')
+    {
+        $(this).val(0);
+    }
+});
+
+function back()
+{
+    window.history.back();
+}
+
+</script>

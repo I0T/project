@@ -1,0 +1,40 @@
+{extends file="main.html"}
+{block name="title"}车辆详情信息{/block}
+
+{block name="body"}
+ <div id="mcentent" class="cf">
+	  <img src="{#YXP_STATIC_DOMAIN#}/css/ford/images/readtitleimg.jpg" width="962"><div class="mheight">
+      <table width="940" align="center" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td colspan="4" class="mxinxi_td01">车辆基本信息</td>
+        </tr>
+        <tr>
+          <td class="mxinxi_td02">车辆信息</td>
+          <td class="mxinxi_td03">{$car.car_name}</td>
+          <td class="mxinxi_td02">车辆所在地</td>
+          <td class="mxinxi_td03">{$car.city_name}</td>
+        </tr>
+        <tr>
+          <td class="mxinxi_td02">车牌</td>
+          <td class="mxinxi_td04">{$car.no}</td>
+          <td class="mxinxi_td02">颜色</td>
+          <td class="mxinxi_td04">{$car.color}</td>
+        </tr>
+        </table>
+
+        <iframe src=
+        {if $car_data.source_from lt 3}
+        "{$dict_domain_chake}/mobile/ReportInfo.aspx?taskId={$car.chake_task_id}"
+        {else}
+        "{$dict_domain_chake}/Mobile/ReportNew.aspx?CarId={$car.hy_carid}"
+        {/if} style="width:100%;height:600px;"/>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+{/block}
+
+
+
+

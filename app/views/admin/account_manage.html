@@ -1,0 +1,145 @@
+{extends file="main.html"}
+{block name="title"}账户中心{/block}
+{block name="menu"}
+{include file="dealer/_sub_nav.html"}
+{/block}
+{block name="cssjs"}
+<style type="text/css">
+.fqright table .table_td_w{
+background-color:#FAFAFA;
+border-right:1px solid #ECECEC;
+color:#666666;
+text-align:right;
+width:185px;
+border-bottom:1px solid #ECECEC;
+line-height:24px;
+padding: 10px 0;
+font-weight:bold;
+}
+.fqright table td{
+border-bottom:1px solid #ECECEC;
+line-height:24px;
+padding: 10px 0;
+padding-left:20px;
+}
+.mebInf{
+background-color:#FFFFFF;
+border:1px solid #BABABA;
+overflow:hidden;
+}
+</style>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery-ui-1.10.3.custom.min.js?v={#cssjs_version#}"></script>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.validationEngine-zh_CN.js?v={#cssjs_version#}"></script>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.validationEngine.js?v={#cssjs_version#}"></script>
+<link href="{#YXP_STATIC_DOMAIN#}/css/cp/validationEngine.jquery.css?v={#cssjs_version#}" rel="stylesheet" type="text/css" />
+{/block}
+{block name="body"}
+<div id="mcentent" class="cf">
+  <div class="fqleftBg" style="height:416px">
+    <!--系统通知左侧开始-->
+    <div class="fqleft">
+      <ul>
+        <li><a href="/admin/account/" {if $y_c eq 'account' && $y_a eq 'index'}class="hover"{/if}>基本信息</a></li>
+        <li><a href="/admin/account/manage/" {if $y_c eq 'account' && $y_a eq 'manage'}class="hover"{/if}>账户管理</a></li>
+      </ul>
+    </div>
+    <!--系统通知左侧结束-->
+    <!--系统通知右侧侧开始-->
+    <div class="fqright">
+      <div class="mebInf" style="line-height:30px;">
+      <form action="" method="post" id="formcheck">
+          <table width="100%" cellspacing="0" cellpadding="0" style="">
+              <tr>
+                <td class="table_td_w">当前短信接收号码:</td>
+                <td>
+                  <input type="text" name="mobile" value="{$user_data.mobile}" id="mobile" class="fqvinm validate[required,custom[telephone]],minSize[11],maxSize[11]" data-errormessage-value-missing="请填写手机号！">
+                </td>
+              </tr>
+              <tr>
+                <td class="table_td_w">登陆账号：</td>
+                <td>
+                  {$y_user.username}
+                </td>
+              </tr>
+              <tr>
+                <td class="table_td_w">原密码：</td>
+                <td>
+                  <input name="oldpwd" type="password" id="oldpwd" class="fqvinm validate[required,custom[onlyLetterNumber]]" value="" data-errormessage-value-missing="请填写旧密码！">
+                </td>
+              </tr>
+              <tr>
+                <td class="table_td_w">新密码：</td>
+                <td>
+                  <input name="password" type="password" id="password" class="fqvinm validate[required,minSize[6],maxSize[20],custom[onlyLetterNumber]]" value="" data-errormessage-value-missing="请填写密码！">
+                </td>
+              </tr>
+              <tr>
+                <td class="table_td_w">确认密码：</td>
+                <td>
+                  <input name="sur_password" type="password" id="sur_password" class="fqvinm validate[condRequired[password],equals[password]]" value="">
+                </td>
+              </tr>
+              <tr><td align="center" colspan="2" style="padding-right:52px">
+                <input type="button" value="修改" id="sub" onclick="send();" class="vmBtn2">
+              </td>
+            </tr>
+        </table>
+      </form>
+      </div>
+    </div>
+  <!--系统通知右侧侧结束-->
+  </div>
+  <!--sql-->
+  {if in_array($user_data.username, array('seller_wei','seller_jin'))}
+  <div class="mebInf" style="line-height:30px;">
+      <form action="/admin/account/query_sql/" method="get">
+          <table width="100%" cellspacing="0" cellpadding="0" style="">
+              <tr>
+                <th class="table_td_w">操作SQL:</th>
+                <td>
+                  <input type="text" name="sql"  class="fqvinm validate[required]" style="width:600px"/> 
+                  <input type="submit" name="" id="" class="vmBtn2" value="执行"/>
+                </td>
+              </tr>
+            </table>
+        </form>
+    </div>
+    {if $sql_show}<font color="red" style="padding-left:20px">{$sql_show}</font>{/if}
+    {/if}
+  <!--sql-->
+ </div>
+<div class="clear"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#formcheck").validationEngine({
+      scroll: false,
+      promptPosition: 'centerRight',
+      maxErrorsPerField: 1,
+      showOneMessage: true,
+      addPromptClass: 'formError-noArrow formError-text'
+    });
+  });
+
+function send()
+{
+    if($("#formcheck").validationEngine('validate'))
+    {
+        var password=$('#password').val();
+        var oldpwd=$('#oldpwd').val();
+        var mobile=$('#mobile').val();
+        $.post('/admin/account/manage/',{ mobile:mobile,password:password,oldpwd:oldpwd},
+        function(json)
+        {
+            if(json==1)
+            {
+                alert('修改成功');
+            }else if(json==2){
+                alert('原密码错误');
+            }else{
+                alert('修改失败');
+            }
+        });
+    }
+}
+</script>
+{/block}

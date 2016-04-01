@@ -1,0 +1,41 @@
+
+SetEnv YXP_CACHE_DIR "E:\youxinpai\projects\cache"
+
+#DB[jaguar]
+SetEnv DB_JAGUAR_HOST '192.168.200.211'
+SetEnv DB_JAGUAR_PORT 3306
+SetEnv DB_JAGUAR_USER 'db1'
+SetEnv DB_JAGUAR_PASS '123123'
+SetEnv DB_JAGUAR_NAME 'jaguar_landrover'
+
+#DB[yxp_cp]
+SetEnv DB_YXP_CP_HOST '192.168.200.21'
+SetEnv DB_YXP_CP_PORT 3306
+SetEnv DB_YXP_CP_USER 'db1'
+SetEnv DB_YXP_CP_PASS '123123'
+SetEnv DB_YXP_CP_NAME 'yxp_cp'
+
+#MEMCACHEQ
+SetEnv SITE_MEMCQ_SERVER '192.168.200.21:22201'
+
+
+SetEnv SITE_LDAP_HOST '192.168.200.250'
+SetEnv SITE_LDAP_PORT '389'
+SetEnv SITE_LDAP_USER 'yf-admin'
+SetEnv SITE_LDAP_PASS '1qaz@WSX'
+
+SetEnv SITE_DOMAIN_AUCTIONSERVICE 'test31.auctionservice.upp.cn'
+SetEnv SITE_DOMAIN_CHAKE 'test.checkauto.com.cn'
+SetEnv SITE_DOMAIN_YXP 'test31.upp.ucar.cn'
+SetEnv SITE_DOMAIN_YXP 'test31.upp.ucar.cn'
+SetEnv SITE_DOMAIN_PADAPI 'padapi.test.youxinpai.com'
+SetEnv SITE_DOMAIN_CP 'cp.test.youxinpai.com'
+
+SetEnv SITE_CACHE_DIR 'E:\youxinpai\projects\cache\oa.youxinpai.com'
+SetEnv SITE_LOG_DIR 'E:\youxinpai\projects\log\oa.youxinpai.com'
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond $1 !^(/images/|/js/|/css/|/index\.php|/robots\.txt|/favicon\.ico)
+RewriteRule ^(.*)$ /index.php/$1 [L]

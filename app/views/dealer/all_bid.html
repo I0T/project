@@ -1,0 +1,24 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="ProgId" content="Excel.Sheet"/>
+ </head>
+ <body>
+<table border="1">
+<tr>
+<th x:str>车辆信息</th>
+<th x:str>VIN</th>
+<th x:str>成交价(万元)</th>
+<th x:str >成交买家编号</th>
+</tr>
+{foreach $data as $p}
+<tr>
+	<td>{$p.car_name}</td>
+	<td>{$p.vin}</td>
+	<td>{$p.top_price}</td>
+	<td>{$p.username}</td>
+</tr>
+{/foreach}
+</table>
+ </body>
+</html>

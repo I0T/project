@@ -1,0 +1,2020 @@
+@charset "utf-8";
+
+
+
+/*---------------------------------------------------------------------------------------------*/
+*{margin:0;padding:0;text-align:center}
+
+body{background:#e5e5e5;font-size:14px;width:1080px;}
+
+a{text-decoration:none;color:#333;}
+
+ul,li,dl,dd{list-style:none;}
+
+div{display:block;}
+
+.fll{float:left;}
+
+.flr{float:right;}
+
+table,td{border:1px #999 solid;font-size:12px;}
+
+table{border-right:none;border-bottom:none;margin:10px auto;}
+
+td{border-top:none;border-left:none;padding:0 5px;line-height:30px;}
+
+.font_red{color:#b70004;line-height:50px;}
+
+.carTitle{/*width:1080px*/width:100%;height:45px;background:#febf4e;position:fixed;top:0px;padding:5px;-webkit-box-shadow:0 1px 5px #333;z-index:99;}
+
+.carPhoto,.carBasicInfo,.carSkeleton,.carComputer{width:1040px;height:auto;margin:0 auto;background:#fff;border:1px #ccc solid;border-bottom:2px #555 solid;margin-top:10px;-webkit-box-shadow:0 0 5px #ccc;}
+
+.carDominance,.carRecessiveness{width:1040px;height:auto;margin:0 auto;}
+
+/*.carLeft,.carRight{width:510px;background:#fff;border:1px #ccc solid;border-bottom:2px #555 solid;
+                  /* margin-top:10px;*/
+                   /*-webkit-box-shadow:0 0 5px #ccc;}*/
+ .carLeft,.carRight{width:510px;background:#fff; cursor:inherit}
+
+.carImage{overflow:auto;padding-bottom:10px;background:#333; width:1040px}
+
+.jl{width:20px;height:160px;background:url("/mobile/local/images/jl.png") no-repeat;margin:0 10px;}
+
+.jr{width:20px;height:160px;background:url("/mobile/local/images/jr.png") no-repeat;margin:0 10px;}
+
+.carWarning{width:200px;height:44px;background:url("/mobile/local/images/warning.png") no-repeat;margin-left:15px;padding-left:30px;}
+
+.x_top{height:40px;background:url("/mobile/local/images/top.png");border-bottom:3px #555 solid;text-align:left}/*头部背景*/
+
+.x_title{color:#0b52ae;line-height:40px;margin-left:20px;font-weight:bold;font-size:16px; text-align:left}/*标题文字*/
+
+.x_body{padding:5px;}
+
+.Modification{width:70px;height:30px;text-align:center;line-height:30px;margin-top:5px;margin-right:10px;border-radius:5px;background:#555;cursor:pointer;color:#fff;}/*修改按钮*/
+
+.td_w{background:#fff;text-align:left;TABLE-LAYOUT: fixed; WORD-BREAK: break-all;border-collapse: collapse}
+
+.td_b{background:#ddd;text-align:right;font-weight:bold;}
+
+.td_grade{background:#ffffb7;text-align:right;font-weight:bold;color:#454eb1; font-size:14px;}
+
+.td_o{background:#FC0;text-align:center;}
+
+.gradefont{ margin-left: 25px; margin-top: 27px; position: absolute;}
+
+.gradeimage{margin-left: 100px; margin-top: 10px;}
+
+.clear{clear:both;}
+
+.button{width:220px;height:70px;text-align:center;line-height:70px;margin:30px auto;border-radius:5px;background:#555;cursor:pointer;color:#fff;font-size:24px;}
+
+.Blank{height:50px;}
+
+.carMenu{;margin-right:10px;}
+
+.carMenu a{line-height:45px;margin-right:10px;font-size:16px;font-weight:bold;}
+
+.x_body_left,.x_body_right{width:240px;position:relative;}
+
+.skele_body_left,.skele_body_right{width:510px;position:relative;}
+
+.carRecessOut{height:320px;background:url("/mobile/local/images/carPaint.png") no-repeat; padding-top:7px;}
+
+.carRecessIn{height:320px;background:url("/mobile/local/images/upholstery.png") no-repeat; padding-left:8px; padding-top:35px;}
+
+.carRecessSkele_left{height:250px;width:260px;background:url("/mobile/local/images/skeleout_left.png") no-repeat; position:relative}
+
+.carRecessSkele_right{height:250px;width:260px;background:url("/mobile/local/images/skeleout_right.png") no-repeat;position:relative}
+
+.carUnRecessOut{height:350px;background:url("/mobile/local/images/waiguan_carouter.png") no-repeat;}
+
+.carUnRecessSkele{height:350px;background:url("/mobile/local/images/UnRecessSkele.png") no-repeat;}
+
+.three{margin:0 auto;width:300px;}
+
+/*----------------------------------------------横屏双排----------------------------------------------------------*/
+
+.carImage ul{}
+
+.carImage li{display:inline-block;margin-right:2px;list-style:none;border:1px solid #000;margin-top:10px;}
+
+.carImage li img{width:103px; cursor:pointer}
+
+.photoName{line-height:20px;text-align:center;font-size:12px;color:#fff;background:#000;}
+
+
+/*-------------------------------------------------carIn---------------------------------------------------*/
+
+.in_01{
+	position:absolute;
+	top:51px;
+	left:20px;
+	
+}
+
+.in_01{
+	position:absolute;
+	top:51px;
+	left:20px;
+}
+.in_02{
+	position:absolute;
+	top:51px;
+	left:70px;
+    bottom: 269px;
+}
+.in_03{
+	position:absolute;
+	top:51px;
+	left:103px;
+}
+.in_04{
+	position:absolute;
+	top:51px;
+	left:140px;
+}
+.in_05{
+	position:absolute;
+	top:51px;
+	left:171px;
+}
+.in_06{
+	position:absolute;
+	top:81px;
+	left:20px;
+}
+.in_07{
+	position:absolute;
+	top:81px;
+	left:70px;
+}
+.in_08{
+	position:absolute;
+	top:81px;
+	left:103px;
+}
+.in_09{
+	position:absolute;
+	top:81px;
+	left:140px;
+}
+.in_10{
+	position:absolute;
+	top:81px;
+	left:171px;
+}
+.in_11{
+	position:absolute;
+	top:111px;
+	left:20px;
+}
+.in_12{
+	position:absolute;
+	top:111px;
+	left:171px;
+}
+.in_13{
+	position:absolute;
+	top:132px;
+	left:20px;
+}
+.in_14{
+	position:absolute;
+	top:132px;
+	left:48px;
+}
+.in_15{
+	position:absolute;
+	top:132px;
+	left:171px;
+}
+.in_16{
+	position:absolute;
+	top:132px;
+	left:193px;
+}
+.in_17{
+	position:absolute;
+	top:141px;
+	left:90px;
+}
+.in_18{
+	position:absolute;
+	top:141px;
+	left:120px;
+}
+.in_19{
+	position:absolute;
+	top:158px;
+	left:20px;
+}
+.in_20{
+	position:absolute;
+	top:158px;
+	left:48px;
+}
+.in_21{
+	position:absolute;
+	top:159px;
+	left:171px;
+}
+.in_22{
+	position:absolute;
+	top:159px;
+	left:193px;
+}
+.in_23{
+	position:absolute;
+	top:186px;
+	left:20px;
+}
+.in_24{
+	position:absolute;
+	top:186px;
+	left:48px;
+}
+.in_25{
+	position:absolute;
+	top:185px;
+	left:90px;
+}
+.in_26{
+	position:absolute;
+	top:185px;
+	left:120px;
+}
+.in_27{
+	position:absolute;
+	top:186px;
+	left:171px;
+}
+.in_28{
+	position:absolute;
+	top:186px;
+	left:193px;
+}
+.in_29{
+	position:absolute;
+	top:211px;
+	left:20px;
+}
+.in_30{
+	position:absolute;
+	top:211px;
+	left:48px;
+}
+.in_31{
+	position:absolute;
+	top:211px;
+	left:171px;
+}
+.in_32{
+	position:absolute;
+	top:211px;
+	left:193px;
+}
+.in_33{
+	position:absolute;
+	top:237px;
+	left:20px;
+}
+.in_34{
+	position:absolute;
+	top:238px;
+	left:171px;
+}
+.in_35{
+	position:absolute;
+	top:254px;
+	left:71px;
+}
+.in_36{
+	position:absolute;
+	top:254px;
+	left:103px;
+}
+.in_37{
+	position:absolute;
+	top:254px;
+	left:140px;
+}
+.in_38{
+	position:absolute;
+	top:256px;
+	left:20px;
+}
+.in_39{
+	position:absolute;
+	top:258px;
+	left:171px;
+}
+.in_40{
+	position:absolute;
+	top:276px;
+	left:20px;
+}
+.in_41{
+	position:absolute;
+	top:277px;
+	left:171px;
+}
+.in_42{
+	position:absolute;
+	top:287px;
+	left:70px;
+}
+.in_43{
+	position:absolute;
+	top:287px;
+	left:121px;
+}
+
+
+
+
+/*-------------------------------------------------carOut---------------------------------------------------*/
+
+
+.out_01{
+	position:absolute;
+	top:51px;
+	left:20px;
+}
+.out_02{
+	position:absolute;
+	top:51px;
+	left:69px;
+}
+.out_03{
+	position:absolute;
+	top:51px;
+	left:103px;
+}
+.out_04{
+	position:absolute;
+	top:51px;
+	left:141px;
+}
+.out_05{
+	position:absolute;
+	top:51px;
+	left:171px;
+}
+.out_06{
+	position:absolute;
+	top:81px;
+	left:20px;
+}
+.out_07{
+	position:absolute;
+	top:81px;
+	left:69px;
+}
+.out_08{
+	position:absolute;
+	top:81px;
+	left:103px;
+}
+.out_09{
+	position:absolute;
+	top:81px;
+	left:141px;
+}
+.out_10{
+	position:absolute;
+	top:81px;
+	left:171px;
+}
+.out_11{
+	position:absolute;
+	top:111px;
+	left:20px;
+}
+.out_12{
+	position:absolute;
+	top:111px;
+	left:171px;
+}
+.out_13{
+	position:absolute;
+	top:131px;
+	left:20px;
+}
+.out_14{
+	position:absolute;
+	top:131px;
+	left:48px;
+}
+.out_15{
+	position:absolute;
+	top:131px;
+	left:171px;
+}
+.out_16{
+	position:absolute;
+	top:131px;
+	left:193px;
+}
+.out_17{
+	position:absolute;
+	top:141px;
+	left:90px;
+}
+.out_18{
+	position:absolute;
+	top:141px;
+	left:120px;
+}
+.out_19{
+	position:absolute;
+	top:158px;
+	left:20px;
+}
+.out_20{
+	position:absolute;
+	top:158px;
+	left:48px;
+}
+.out_21{
+	position:absolute;
+	top:159px;
+	left:171px;
+}
+.out_22{
+	position:absolute;
+	top:159px;
+	left:193px;
+}
+.out_23{
+	position:absolute;
+	top:186px;
+	left:20px;
+}
+.out_24{
+	position:absolute;
+	top:186px;
+	left:48px;
+}
+.out_25{
+	position:absolute;
+	top:185px;
+	left:90px;
+}
+.out_26{
+	position:absolute;
+	top:185px;
+	left:120px;
+}
+.out_27{
+	position:absolute;
+	top:186px;
+	left:171px;
+}
+.out_28{
+	position:absolute;
+	top:186px;
+	left:193px;
+}
+.out_29{
+	position:absolute;
+	top:211px;
+	left:20px;
+}
+.out_30{
+	position:absolute;
+	top:211px;
+	left:48px;
+}
+.out_31{
+	position:absolute;
+	top:211px;
+	left:171px;
+}
+.out_32{
+	position:absolute;
+	top:211px;
+	left:193px;
+}
+.out_33{
+	position:absolute;
+	top:237px;
+	left:20px;
+}
+.out_34{
+	position:absolute;
+	top:238px;
+	left:171px;
+}
+.out_35{
+	position:absolute;
+	top:254px;
+	left:70px;
+}
+.out_36{
+	position:absolute;
+	top:254px;
+	left:103px;
+}
+.out_37{
+	position:absolute;
+	top:254px;
+	left:140px;
+}
+.out_38{
+	position:absolute;
+	top:256px;
+	left:20px;
+}
+.out_39{
+	position:absolute;
+	top:258px;
+	left:171px;
+}
+.out_40{
+	position:absolute;
+	top:276px;
+	left:20px;
+}
+.out_41{
+	position:absolute;
+	top:277px;
+	left:171px;
+}
+.out_42{
+	position:absolute;
+	top:287px;
+	left:70px;
+}
+.out_43{
+	position:absolute;
+	top:287px;
+	left:121px;
+}
+
+
+/*-------------------------------------------------SkeleIn---------------------------------------------------*/
+
+
+.skin_01{
+	position:absolute;
+	top:110px;
+	left:17px;
+}
+.skin_02{
+	position:absolute;
+	top:44px;
+	left:427px;
+}
+.skin_03{
+	position:absolute;
+	top:60px;
+	left:503px;
+}
+.skin_04{
+	position:absolute;
+	top:131px;
+	left:542px;
+}
+.skin_05{
+	position:absolute;
+	top:132px;
+	left:142px;
+}
+.skin_06{
+	position:absolute;
+	top:182px;
+	left:12px;
+}
+.skin_07{
+	position:absolute;
+	top:142px;
+	left:108px;
+}
+.skin_08{
+	position:absolute;
+	top:152px;
+	left:56px;
+}
+.skin_09{
+	position:absolute;
+	top:144px;
+	left:171px;
+}
+.skin_10{
+	position:absolute;
+	top:123px;
+	left:619px;
+}
+.skin_11{
+	position:absolute;
+	top:111px;
+	left:20px;
+}
+.skin_12{
+	position:absolute;
+	top:193px;
+	left:617px;
+}
+.skin_13{
+	position:absolute;
+	top:131px;
+	left:20px;
+}
+.skin_14{
+	position:absolute;
+	top:131px;
+	left:48px;
+}
+.skin_15{
+	position:absolute;
+	top:181px;
+	left:147px;
+}
+.skin_16{
+	position:absolute;
+	top:144px;
+	left:171px;
+}
+.skin_17{
+	position:absolute;
+	top:141px;
+	left:90px;
+}
+.skin_18{
+	position:absolute;
+	top:141px;
+	left:120px;
+}
+.skin_19{
+	position:absolute;
+	top:158px;
+	left:20px;
+}
+.skin_20{
+	position:absolute;
+	top:158px;
+	left:48px;
+}
+.skin_21{
+	position:absolute;
+	top:196px;
+	left:104px;
+}
+.skin_22{
+	position:absolute;
+	top:251px;
+	left:489px;
+}
+.skin_23{
+	position:absolute;
+	top:186px;
+	left:20px;
+}
+.skin_24{
+	position:absolute;
+	top:186px;
+	left:48px;
+}
+.skin_25{
+	position:absolute;
+	top:185px;
+	left:90px;
+}
+.skin_26{
+	position:absolute;
+	top:185px;
+	left:120px;
+}
+.skin_27{
+	position:absolute;
+	top:167px;
+	left:314px;
+}
+.skin_28{
+	position:absolute;
+	top:221px;
+	left:46px;
+}
+.skin_29{
+	position:absolute;
+	top:211px;
+	left:20px;
+}
+.skin_30{
+	position:absolute;
+	top:211px;
+	left:48px;
+}
+.skin_31{
+	position:absolute;
+	top:211px;
+	left:171px;
+}
+.skin_32{
+	position:absolute;
+	top:211px;
+	left:193px;
+}
+.skin_33{
+	position:absolute;
+	top:237px;
+	left:20px;
+}
+.skin_34{
+	position:absolute;
+	top:238px;
+	left:171px;
+}
+.skin_35{
+	position:absolute;
+	top:254px;
+	left:70px;
+}
+.skin_36{
+	position:absolute;
+	top:254px;
+	left:103px;
+}
+.skin_37{
+	position:absolute;
+	top:254px;
+	left:140px;
+}
+.skin_38{
+	position:absolute;
+	top:256px;
+	left:20px;
+}
+.skin_39{
+	position:absolute;
+	top:258px;
+	left:171px;
+}
+.skin_40{
+	position:absolute;
+	top:276px;
+	left:20px;
+}
+.skin_41{
+	position:absolute;
+	top:277px;
+	left:171px;
+}
+.skin_42{
+	position:absolute;
+	top:287px;
+	left:70px;
+}
+.skin_43{
+	position:absolute;
+	top:287px;
+	left:121px;
+}
+
+
+
+
+/*-------------------------------------------------SkeleOut---------------------------------------------------*/
+
+.skout_01{
+	position:absolute;
+	top:110px;
+	left:17px;
+}
+.skout_02{
+	position:absolute;
+	top:44px;
+	left:427px;
+}
+.skout_03{
+	position:absolute;
+	top:60px;
+	left:503px;
+}
+.skout_04{
+	position:absolute;
+	top:131px;
+	left:542px;
+}
+.skout_05{
+	position:absolute;
+	top:132px;
+	left:142px;
+}
+.skout_06{
+	position:absolute;
+	top:182px;
+	left:12px;
+}
+.skout_07{
+	position:absolute;
+	top:142px;
+	left:108px;
+}
+.skout_08{
+	position:absolute;
+	top:152px;
+	left:56px;
+}
+.skout_09{
+	position:absolute;
+	top:144px;
+	left:171px;
+}
+.skout_10{
+	position:absolute;
+	top:123px;
+	left:619px;
+}
+.skout_11{
+	position:absolute;
+	top:111px;
+	left:20px;
+}
+.skout_12{
+	position:absolute;
+	top:193px;
+	left:617px;
+}
+.skout_13{
+	position:absolute;
+	top:131px;
+	left:20px;
+}
+.skout_14{
+	position:absolute;
+	top:131px;
+	left:48px;
+}
+.skout_15{
+	position:absolute;
+	top:181px;
+	left:147px;
+}
+.skout_16{
+	position:absolute;
+	top:144px;
+	left:171px;
+}
+.skout_17{
+	position:absolute;
+	top:141px;
+	left:90px;
+}
+.skout_18{
+	position:absolute;
+	top:141px;
+	left:120px;
+}
+.skout_19{
+	position:absolute;
+	top:158px;
+	left:20px;
+}
+.skout_20{
+	position:absolute;
+	top:158px;
+	left:48px;
+}
+.skout_21{
+	position:absolute;
+	top:196px;
+	left:104px;
+}
+.skout_22{
+	position:absolute;
+	top:251px;
+	left:489px;
+}
+.skout_23{
+	position:absolute;
+	top:186px;
+	left:20px;
+}
+.skout_24{
+	position:absolute;
+	top:186px;
+	left:48px;
+}
+.skout_25{
+	position:absolute;
+	top:185px;
+	left:90px;
+}
+.skout_26{
+	position:absolute;
+	top:185px;
+	left:120px;
+}
+.skout_27{
+	position:absolute;
+	top:167px;
+	left:314px;
+}
+.skout_28{
+	position:absolute;
+	top:221px;
+	left:46px;
+}
+.skout_29{
+	position:absolute;
+	top:211px;
+	left:20px;
+}
+.skout_30{
+	position:absolute;
+	top:211px;
+	left:48px;
+}
+.skout_31{
+	position:absolute;
+	top:211px;
+	left:171px;
+}
+.skout_32{
+	position:absolute;
+	top:211px;
+	left:193px;
+}
+.skout_33{
+	position:absolute;
+	top:237px;
+	left:20px;
+}
+.skout_34{
+	position:absolute;
+	top:238px;
+	left:171px;
+}
+.skout_35{
+	position:absolute;
+	top:254px;
+	left:70px;
+}
+.skout_36{
+	position:absolute;
+	top:254px;
+	left:103px;
+}
+.skout_37{
+	position:absolute;
+	top:254px;
+	left:140px;
+}
+.skout_38{
+	position:absolute;
+	top:256px;
+	left:20px;
+}
+.skout_39{
+	position:absolute;
+	top:258px;
+	left:171px;
+}
+.skout_40{
+	position:absolute;
+	top:276px;
+	left:20px;
+}
+.skout_41{
+	position:absolute;
+	top:277px;
+	left:171px;
+}
+.skout_42{
+	position:absolute;
+	top:287px;
+	left:70px;
+}
+.skout_43{
+	position:absolute;
+	top:287px;
+	left:121px;
+}
+/*------------------dcm  add---------------------*/
+.div_clear{ clear:left; width:1080px; }
+.div_width_title{width:120px; padding:0px; }
+.div_height_yinxing{ height:500px;  }
+.div_diagdata_width_title{width:225px; padding:0px;}
+.div_diagdata_width_content{width:128px; padding:0px;padding-left:5px; }
+.div_carinfo_title{ width:110px;  }
+.xing{color:red}
+.div_out_pain{ text-align:left }
+.div_kejiangujia_banjinjan{width:260px;}
+.div_m_top{ margin-top:10px;}
+.div_bg_write{  background-color:#ffffff;border:1px #ccc solid;border-bottom:2px #555 solid;
+                  /* margin-top:10px;*/
+                   -webkit-box-shadow:0 0 5px #ccc; }
+.div_yinxing_pain_height{height:60px; vertical-align:top}
+.x_carinfo_title{color:#0b52ae;line-height:30px;margin-left:20px;font-weight:bold;font-size:12px; text-align:left}/*标题文字*/
+.img_chakan_flr{ float:right;  margin-top:7px;}
+.div_out_innerdiv{width:184px; height:292px;   margin-left:32px;}
+.div_inner_innerdiv{width:233px; height:249px;  }
+#u1_1 li {
+    display: inline;
+    float: left;
+    height: 14px;
+    line-height: 14px;
+    position: relative;
+    text-align: center;
+    width: 14px;
+    font-size:10px;
+ /* background:url("../images/beiji1.png") */
+}
+#u1_2 li {
+    display: inline;
+    float: left;
+    height: 17px;
+    line-height: 17px;
+    position: relative;
+    text-align: center;
+    width: 17px;
+    font-size:10px;
+ /* background:url("../images/beiji1.png");*/
+   background-position:center;
+   background-repeat:no-repeat;
+}
+/*-----------图片显示页面样式  dcm 2012-7-18---------------------*/
+#body_showimglist_id{ position:absolute ; z-index:9999;position:fixed;top:5px;border:8px #cccccc solid;border-radius: 5px;}
+.body_showimglist{ height:635px;background-color:#E8E8E8;position:absolute  }
+/*图片列表页面左侧列表*/
+.outher_title_list_span_title{ font-size:18px; line-height:30px;color:#0b52ae; }/*图片列表分类标题*/
+.outher_title_list{width:143px; background-color:#EFEFEF;border-right:2px #F7F7F7 solid;height:635px; }
+.outher_title_list ul{width:140px; margin-left:0px; height:595px; overflow:auto;border-top:1px #D7D7D7 solid }
+.outher_title_list ul li.outselect{width:126px;cursor:pointer; line-height:33px; background-image:url(/mobile/local/images/outher_imglist_out.png); font-size:16px;text-align:left; padding-left:4px; }
+.outher_title_list ul li.select{width:126px; cursor:pointer;line-height:33px; background-image:url(/mobile/local/images/outher_imglist_over.png); font-size:16px;text-align:left; padding-left:4px; color:#ffffff}
+/*图片列表页面图片显示区*/
+.outher_img_list{width:800px;background-color:#E8E8E8;}
+.outher_img_detecttype{ background-color:#E8E8E8;margin-top:10px;height:24px; width:100%; padding-left:15px; text-align:left; line-height:24px; font-size:22px; }/*border-bottom:2px #F7F7F7 solid ;*/
+.outher_img_detecttype span.detect{color:#CC6600; font-size:18px; font-weight:bold}
+.outher_img_detectimg{ background-color:#E8E8E8; height:590px; width:100%; position:relative;}
+.outher_img_detectimg img{height:600px; width:800px;}/*800*600  780*585   border:1px #000000 solid margin-top:5px; */
+/*左右箭头按钮*/
+.outher_imglist_imgClickLeft{background-image:url("/mobile/local/images/outher_imglist_left.png");
+left:155px;top:270px; background-repeat:no-repeat;width:55px;
+height:55px;position:absolute;  z-index:99;cursor:pointer;}
+.outher_imglist_imgClickRight{background-image:url("/mobile/local/images/outher_btn_right.png"); background-repeat:no-repeat;
+top:270px;left:885px;cursor:pointer;
+width:55px;height:55px;position:absolute;  z-index:99;}
+/*图片列表页面返回按钮，显示提示信息显示区*/
+.outher_showdetect_guang_list{width:132px;background-color:#EFEFEF; height:635px;border-left:2px #F7F7F7 solid;position: relative; }
+.outher_showdetect_guang_list div.home{ margin-left:10px;margin-top:20px;}
+.outher_showdetect_guang_list div.Modification{width:100px;height:60px;text-align:center;line-height:60px;margin-top:50px; font-size:28px;margin-left:15px;border-radius:5px;background:#555;cursor:pointer;color:#fff;}/*返回按钮*/
+#div_outher_guang_show_type{font-size:24px; color:#5d5d5d; font-weight:bold; margin-top:280px;width:100%; text-align:center}/*分页显示*/
+#div_outher_guang_show_type span.page_select{ color:#CC0000}
+/*外观雷达*/
+.carRecessOut_smaill{ position:absolute;top:405px;left:-95px;;bottom:0px;width:227px;height:227px;background:url("/mobile/local/images/carPaint_samll.png") no-repeat;   z-index:99; right:0px;  }
+.div_out_innerdiv_smaill{width:108px; margin-left:60px; margin-top:20px; }
+#u1_1_smaill li{
+/*background:url("../images/beiji1.png");*/
+float:left; height:
+9px; width:8px;}
+/*车身18张图片显示位置*/
+.carRecessOut_smaill_carinfo{ position:absolute;top:483px;left:-55px;;bottom:0px;width:188px;height:150px;z-index:99; right:0px;  }
+/*内饰雷达*/
+.carRecessIn_smaill{ position:absolute;top:405px;left:-95px;;bottom:0px;width:227px;height:227px;background:url("/mobile/local/images/upholstery_samll.png") no-repeat;   z-index:99; right:0px;}
+.div_inner_innerdiv_smaill{width:130px; height:142px; margin-top:41px; margin-left:42px;}
+#smaill_u1_2 li{
+/*background:url("../images/beiji1.png");*/
+float:left; height:
+10px; width:10px;}
+
+/*-----------------重点事故登记点位显示------------------------------------------------重点事故登记点位显示--------------------*/
+
+/*水箱框架左*/
+.skele_new_3_a_g{
+	position:absolute;
+	top:183px;
+	left:51px;
+	height:14px; width:14px;
+	
+}
+/*防火墙左部*/
+.skele_new_3_b_g{
+	position:absolute;
+	top:167px;
+	left:105px;
+	height:14px; width:14px;
+	
+}
+/*左前纵梁*/
+.skele_new_3_c_g{
+	position:absolute;
+	top:217px;
+	left:96px;
+	height:14px; width:14px;
+	
+}
+/*右前纵梁*/
+.skele_new_3_d_g{
+	position:absolute;
+	top:192px;
+	left:29px;
+	height:14px; width:14px;
+	
+}
+
+/*左前梁前*/
+.skele_new_3_2_1{
+	position:absolute;
+	top:184px;
+	left:112px;
+	height:14px; width:14px;
+	
+}
+/*左前梁后*/
+.skele_new_3_2_2{
+	position:absolute;
+	top:173px;
+	left:139px;
+	height:14px; width:14px;
+	
+}
+/*右前梁前*/
+.skele_new_3_3_1{
+	position:absolute;
+	top:155px;
+	left:20px;
+	height:14px; width:14px;
+	
+
+}
+/*右前梁后*/
+.skele_new_3_3_2{
+	position:absolute;
+	top:141px;
+	left:47px;
+	height:14px; width:14px;
+	
+}
+/*左前翼子板前*/
+.skele_new_3_e_g{
+	position:absolute;
+	top:184px;
+	left:112px;
+	height:14px; width:14px;
+	
+}
+/*左前翼子板后*/
+.skele_new_3_e_h{
+	position:absolute;
+	top:173px;
+	left:139px;
+	height:14px; width:14px;
+	
+}
+/*右前翼子板前*/
+.skele_new_3_f_g{
+	position:absolute;
+	top:141px;
+	left:47px;
+	height:14px; width:14px;
+	
+}
+/*右前翼子板后*/
+.skele_new_3_f_h{
+	position:absolute;
+	top:155px;
+	left:20px;
+	height:14px; width:14px;
+	
+}
+
+
+/*左前减震器支架*/
+.skele_new_3_8_1{
+	position:absolute;
+	top:164px;
+	left:128px;
+	height:14px; width:14px;
+}
+/*右前减震器支架*/
+.skele_new_3_8_2{
+	position:absolute;
+	top:154px;
+	left:60px;
+	height:14px; width:14px;
+}
+/*左前轮旋*/
+.skele_new_3_9_1{
+	position:absolute;
+	top:194px;
+	left:126px;
+	height:14px; width:14px;		
+}
+/*右前轮旋*/
+.skele_new_3_9_2{
+	position:absolute;
+	top:165px;
+	left:40px;
+	height:14px; width:14px;	
+}
+
+/*左前机盖铰链*/
+.skele_new_3_10_1{
+	position:absolute;
+	top:150px;
+	left:115px;
+	height:14px; width:14px;
+	
+}
+/*右前机盖铰链*/
+.skele_new_3_10_2{
+	position:absolute;
+	top:143px;
+	left:68px;
+	height:14px; width:14px;
+	
+}
+
+/*左纵梁前端*/
+.skele_new_3_11_1{
+	position:absolute;
+	top:230px;
+	left:74px;
+	height:14px; width:14px;
+	
+}
+/*右纵梁前端*/
+.skele_new_3_11_2{
+	position:absolute;
+	top:193px;
+	left:2px;
+	height:14px; width:14px;
+	
+}
+/*左A柱上*/
+.skele_new_3_i_g{
+	position:absolute;
+	top:128px;
+	left:163px;
+	height:14px; width:14px;
+	
+}
+/*左A柱下*/
+.skele_new_3_i_h{
+	position:absolute;
+	top:155px;
+	left:158px;
+	height:14px; width:14px;
+	
+}
+/*左B柱上*/
+.skele_new_3_j_f{
+	position:absolute;
+	top:122px;
+	left:192px;
+	height:14px; width:14px;
+	
+}
+/*左B柱中*/
+.skele_new_3_j_g{
+	position:absolute;
+	top:144px;
+	left:196px;
+	height:14px; width:14px;
+	
+}
+/*左B柱下*/
+.skele_new_3_j_h{
+	position:absolute;
+	top:170px;
+	left:194px;
+	height:14px; width:14px;
+	
+}
+/*左C柱上*/
+.skele_new_3_k_f{
+	position:absolute;
+	top:106px;
+	left:218px;
+	height:14px; width:14px;
+	
+}
+/*左C柱下*/
+.skele_new_3_k_g{
+	position:absolute;
+	top:120px;
+	left:224px;
+	height:14px; width:14px;
+	
+}
+
+
+/*右前大灯*/
+.skele_new_3_5_1
+{
+	position:absolute;
+	top:166px;
+	left:8px;
+	height:14px; width:14px;
+	
+}
+/*左前大灯*/
+.skele_new_3_5_2
+{
+	position:absolute;
+	top:193px;
+	left:80px;
+	height:14px; width:14px;
+	
+}
+
+
+
+
+
+
+
+/*前防撞梁右*/
+.skele_new_3_4_1
+{
+	position:absolute;
+	top:208px;
+	left:15px;
+	height:14px; width:14px;
+	
+}
+/*前防撞梁左*/
+.skele_new_3_4_2
+{
+	position:absolute;
+	top:219px;
+	left:43px;
+	height:14px; width:14px;
+	
+}
+/*左前门口上*/
+.skele_new_3_o_f
+{
+	position:absolute;
+	top:179px;
+	left:155px;
+	height:14px; width:14px;
+	
+}
+/*左前门口下*/
+.skele_new_3_o_g
+{
+	position:absolute;
+	top:195px;
+	left:160px;
+	height:14px; width:14px;
+	
+}
+
+/*左侧底梁前*/
+.skele_new_3_o_h
+{
+	position:absolute;
+	top:190px;
+	left:174px;
+	height:14px; width:14px;
+	
+}
+
+
+
+/*左侧底梁后*/
+.skele_new_3_q_d
+{
+	position:absolute;
+	top:169px;
+	left:208px;
+	height:14px; width:14px;
+	
+}
+
+/*左后门口上*/
+.skele_new_3_q_e
+{
+	position:absolute;
+	top:142px;
+	left:226px;
+	height:14px; width:14px;
+	
+}
+
+/*左后门口下*/
+.skele_new_3_q_f{
+	position:absolute;
+	top:163px;
+	left:223px;
+	height:14px; width:14px;
+	
+}
+
+/*左顶梁后*/
+.skele_new_3_q_g{
+	position:absolute;
+	top:96px;
+	left:203px;
+	height:14px; width:14px;
+	
+}
+
+
+/*防火墙右部*/
+.skele_new_3_u_g{
+	position:absolute;
+	top:166px;
+	left:80px;
+	height:14px; width:14px;
+	
+}
+/*左顶梁前*/
+.skele_new_3_v_g{
+	position:absolute;
+	top:105px;
+	left:176px;
+	height:14px; width:14px;
+	
+}
+
+
+/*前机盖内缘右*/
+.skele_new_3_y_f{
+	position:absolute;
+	top:84px;
+	left:43px;
+	height:14px; width:14px;
+	
+}
+/*前机盖内缘左*/
+.skele_new_3_y_g{
+	position:absolute;
+	top:92px;
+	left:107px;
+	height:14px; width:14px;
+	
+}
+/*水箱框架右*/
+.skele_new_3_z_g{
+	position:absolute;
+	top:179px;
+	left:28px;
+	height:14px; width:14px;
+	
+}
+/*后备箱底板左*/
+.skele_new_3_6_1{
+	position:absolute;
+	top:176px;
+	left:42px;
+	height:14px; width:14px;
+	
+}
+/*后备箱底板中*/
+.skele_new_3_6_2{
+	position:absolute;
+	top:183px;
+	left:55px;
+	height:14px; width:14px;
+	
+}
+/*后备箱底板右*/
+.skele_new_3_6_3{
+	position:absolute;
+	top:185px;
+	left:68px;
+	height:14px; width:14px;
+	
+}
+/*后备箱盖内缘左*/
+.skele_new_3_7_1{
+	position:absolute;
+	top:97px;
+	left:43px;
+	height:14px; width:14px;
+	
+}
+/*后备箱盖内缘右*/
+.skele_new_3_7_2{
+	position:absolute;
+	top:105px;
+	left:85px;
+	height:14px; width:14px;
+	
+}
+/*左后备箱铰链*/
+.skele_new_3_12_1{
+	position:absolute;
+	top:141px;
+	left:49px;
+	height:14px; width:14px;
+	
+}
+/*右后备箱铰链*/
+.skele_new_3_12_2{
+	position:absolute;
+	top:161px;
+	left:118px;
+	height:14px; width:14px;
+	
+}
+
+/*左后翼子板前*/
+.skele_new_3_g_f{
+	position:absolute;
+	top:153px;
+	left:26px;
+	height:14px; width:14px;
+	
+}
+/*左后翼子板后*/
+.skele_new_3_g_g{
+	position:absolute;
+	top:168px;
+	left:6px;
+	height:14px; width:14px;
+	
+}
+/*右后翼子板前*/
+.skele_new_3_h_f{
+	position:absolute;
+	top:190px;
+	left:118px;
+	height:14px; width:14px;
+	
+}
+/*右后翼子板后*/
+.skele_new_3_h_g{
+	position:absolute;
+	top:205px;
+	left:86px;
+	height:14px; width:14px;
+	
+}
+
+/*后围板左*/
+.skele_new_3_s_g{
+	position:absolute;
+	top:188px;
+	left:24px;
+	height:14px; width:14px;
+	
+}
+/*后围板中*/
+.skele_new_3_1_1{
+	position:absolute;
+	top:199px;
+	left:39px;
+	height:14px; width:14px;
+	
+}
+/*后围板右*/
+.skele_new_3_t_g{
+	position:absolute;
+	top:204px;
+	left:57px;
+	height:14px; width:14px;
+	
+}
+
+/*右B柱上*/
+.skele_new_3_m_f{
+	position:absolute;
+	top:112px;
+	left:181px;
+	height:14px; width:14px;
+	
+}
+/*右B柱中*/
+.skele_new_3_m_g{
+	position:absolute;
+	top:144px;
+	left:188px;
+	height:14px; width:14px;
+	
+}
+/*右B柱下*/
+.skele_new_3_m_h{
+	position:absolute;
+	top:171px;
+	left:191px;
+	height:14px; width:14px;
+	
+}
+/*右A柱上*/
+.skele_new_3_l_g{
+	position:absolute;
+	top:111px;
+	left:205px;
+	height:14px; width:14px;
+	
+}
+/*右A柱下*/
+.skele_new_3_l_h{
+	position:absolute;
+	top:125px;
+	left:220px;
+	height:14px; width:14px;
+	
+}
+/*右C柱上*/
+.skele_new_3_n_g{
+	position:absolute;
+	top:133px;
+	left:145px;
+	height:14px; width:14px;
+	
+}
+/*右C柱下*/
+.skele_new_3_n_h{
+	position:absolute;
+	top:156px;
+	left:148px;
+	height:14px; width:14px;
+	
+}
+/*右前门口上*/
+.skele_new_3_p_g{
+	position:absolute;
+	top:140px;
+	left:224px;
+	height:14px; width:14px;
+	
+}
+/*右前门口下*/
+.skele_new_3_p_h{
+	position:absolute;
+	top:155px;
+	left:224px;
+	height:14px; width:14px;
+	
+}
+/*右底梁前*/
+.skele_new_3_p_i{
+	position:absolute;
+	top:164px;
+	left:210px;
+	height:14px; width:14px;
+	
+}
+/*右底梁后*/
+.skele_new_3_r_d{
+	position:absolute;
+	top:188px;
+	left:171px;
+	height:14px; width:14px;
+	
+}
+/*右后门口上*/
+.skele_new_3_r_e{
+	position:absolute;
+	top:177px;
+	left:146px;
+	height:14px; width:14px;
+	
+}
+/*右后门口下*/
+.skele_new_3_r_f{
+	position:absolute;
+	top:193px;
+	left:151px;
+	height:14px; width:14px;
+	
+}
+
+/*右顶梁前*/
+.skele_new_3_w_g{
+	position:absolute;
+	top:98px;
+	left:194px;
+	height:14px; width:14px;
+	
+}
+/*右顶梁后*/
+.skele_new_3_r_g{
+	position:absolute;
+	top:108px;
+	left:156px;
+	height:14px; width:14px;
+	/*background-image:url(../images/showdetect.png)*/
+}
+
+
+/* bigdiv黑底层 */ 
+#bigdiv
+{
+    width:100%;
+  
+    position:absolute;
+    top:0px;
+    left:0px;
+    background:#333;
+    z-index:999;  
+    opacity:0 .6;
+    filter: alpha(opacity=60);
+}
+span.address_title{  margin-left:20px; color:#0066FF; font-weight:bold}
+span.carinfo_ts{ color:#0066FF; font-size:13px;}
+#detect_show_view_kuang 
+{
+     position:relative;
+                         position:fixed; position:absolute ; 
+                         z-index:998;
+                         width:132px; 
+                         height:auto}
+#div_zuojiantou{ background:url("/mobile/local/images/sanjiaobian.png"); width:15px; height:19px;position:absolute ; top:10px; left:0px;z-index:999;}
+#detect_show_view{ padding-bottom:5px; text-align:center; padding-top:5px; background-color:#ffffff; position:fixed; position:absolute ; border:3px #cccccc solid;border-radius: 3px; width:120px; height:auto; margin-left:12px;}
+#detect_show_view div.title{ font-size:14px; color:#5d5d5d; clear:left; width:120px; text-align:center; line-height:20px; border-bottom:1px #cccccc solid}
+#detect_show_view div.content{ font-size:12px; color:#000000;clear:left; width:110px; text-align:left; margin-top:5px; margin-left:5px;}
+#detect_show_view img{ width:100; height:75; border:2px #5d5d5d solid;clear:left; margin-top:5px; cursor:pointer}
+
+
+/* 骨架雷达样式  */
+
+.carskeleton_smaill{
+	position: absolute;
+	top: 405px;
+	left: -95px;
+	bottom: 0px;
+	width: 227px;
+	height: 227px;
+	z-index: 99;
+	right: 0px;
+}
+
+#smaill_u1_3{
+	position:relative;	
+}
+
+#smaill_u1_3 li{
+	width:10px;
+	height:10px;
+	position:absolute;
+}
+
+#smaill_map3_7_1{
+	top: 27px;
+	left: 4px;
+}
+#smaill_map3_7_2{
+	top: 33px;
+	left: 35px;
+}
+#smaill_map3_6_1{
+	top: 86px;
+	left: 4px;
+}
+#smaill_map3_6_2{
+	top: 88px;
+	left: 12px;
+}
+#smaill_map3_6_3{
+	top: 90px;
+	left: 19px;
+}
+#smaill_map3_s_g{
+	top: 96px;
+	left: -14px;
+}
+#smaill_map3_1_1{
+	top:100px;
+	left:;	
+}
+#smaill_map3_t_g{
+	top: 105px;
+	left: 14px;
+}
+#smaill_map3_h_g{
+	top: 102px;
+	left: 44px;
+}			
+#smaill_map3_h_f{
+	top: 93px;
+	left: 65px;
+}			
+#smaill_map3_r_g{
+	top: 34px;
+	left: 92px;
+}			
+#smaill_map3_n_g{
+	top: 48px;
+	left: 80px;
+}			
+#smaill_map3_n_h{
+	top: 63px;
+	left: 80px;
+}			
+#smaill_map3_r_e{
+	top: 84px;
+	left: 80px;
+}			
+#smaill_map3_r_f{
+	top: 100px;
+	left: 84px;
+}			
+#smaill_map3_r_d{
+	top: 94px;
+	left: 98px;
+}			
+#smaill_map3_m_f{
+	top: 44px;
+	left: 107px;
+}			
+#smaill_map3_m_g{
+	top: 61px;
+	left: 111px;
+}			
+#smaill_map3_m_h{
+	top: 81px;
+	left: 112px;
+}			
+#smaill_map3_w_g{
+	top: 28px;
+	left: 114px;
+}			
+#smaill_map3_l_g{
+	top: 32px;
+	left: 123px;
+}			
+#smaill_map3_l_h{
+	top: 41px;
+	left: 134px;
+}			
+#smaill_map3_p_g{
+	top: 53px;
+	left: 139px;
+}			
+#smaill_map3_p_h{
+	top: 67px;
+	left: 140px;
+}			
+#smaill_map3_p_i{
+	top: 80px;
+	left: 128px;
+}			
+#smaill_map3_y_f{
+	top:20px;
+	left:10px;	
+}			
+#smaill_map3_y_g{
+	top: 26px;
+	left: 52px;
+}			
+#smaill_map3_3_2{
+	top: 60px;
+	left: 8px;
+}			
+#smaill_map3_3_1{
+	top: 69px;
+	left: -6px;
+}			
+#smaill_map3_2_1{
+	top: 92px;
+	left: 57px;
+}			
+#smaill_map3_2_2{
+	top: 86px;
+	left: 79px;
+}			
+#smaill_map3_u_g{
+	top: 75px;
+	left: 34px;
+}			
+#smaill_map3_b_g{
+	top: 79px;
+	left: 47px;	
+}			
+#smaill_map3_5_1{
+	top: 77px;
+	left: -22px;
+}			
+#smaill_map3_5_2{
+	top: 96px;
+	left: 32px;
+}			
+#smaill_map3_a_g{
+	top: 90px;
+	left: 10px;
+}			
+#smaill_map3_z_g{
+	top: 86px;
+	left: -3px;
+}			
+#smaill_map3_d_g{
+	top: 94px;
+	left:0px;	
+}			
+#smaill_map3_c_g{
+	top: 113px;
+	left: 46px;
+}			
+#smaill_map3_v_g{
+	top: 30px;
+	left: 109px;
+}			
+#smaill_map3_i_g{
+	top: 45px;
+	left: 99px;
+}			
+#smaill_map3_i_h{
+	top: 60px;
+	left: 94px;
+}			
+#smaill_map3_o_f{
+	top: 84px;
+	left: 92px;
+}			
+#smaill_map3_o_g{
+	top: 100px;
+	left: 93px;
+}			
+#smaill_map3_o_h{
+	top: 96px;
+	left: 106px;
+}			
+#smaill_map3_j_f{
+	top: 44px;
+	left: 119px;
+}			
+#smaill_map3_j_g{
+	top: 65px;
+	left: 121px;
+}			
+#smaill_map3_j_h{
+	top: 85px;
+	left: 121px;
+}			
+#smaill_map3_q_g{
+	top: 26px;
+	left: 127px;
+}			
+#smaill_map3_k_f{
+	top: 32px;
+	left: 139px;
+}			
+#smaill_map3_k_g{
+	top: 43px;
+	left: 143px;
+}			
+#smaill_map3_g_g{
+	top: 74px;
+	left: -21px;
+}			
+#smaill_map3_g_f{
+	top: 67px;
+	left: -3px;
+}			
+#smaill_map3_q_e{
+	top: 54px;
+	left: 146px;
+}			
+#smaill_map3_q_f{
+	top: 67px;
+	left: 145px;
+}			
+#smaill_map3_q_d{
+	top: 80px;
+	left: 137px;
+}			
+#smaill_map3_4_1{
+	top: 112px;
+	left: -10px;
+}			
+#smaill_map3_4_2{
+	top: 118px;
+	left: 8px;
+}	
+#smaill_map3_10_1{
+	top: 70px;
+	left: 63px;
+}	
+#smaill_map3_10_2{
+	top: 58px;
+	left: 26px;
+}	
+#smaill_map3_11_1{
+	top: 122px;
+	left: 29px;
+}	
+#smaill_map3_11_2{
+	top: 101px;
+	left: -26px;
+}	
+#smaill_map3_8_1{
+	top: 77px;
+	left: 69px;
+}	
+#smaill_map3_8_2{
+	top: 70px;
+	left: 18px;
+}	
+#smaill_map3_9_1{
+	top: 102px;
+	left: 62px;
+}	
+#smaill_map3_9_2{
+	top: 78px;
+	left: ;
+}	
+#smaill_map3_12_1{
+	top: 58px;
+	left: 7px;
+}	
+#smaill_map3_12_2{
+	top: 74px;
+	left: 61px;
+}	

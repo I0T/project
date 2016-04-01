@@ -1,0 +1,41 @@
+{config_load file='smarty.conf' scope='global'}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{block name="title"}{/block}</title>
+<script type="text/javascript" src="{#YXP_STATIC_DOMAIN#}/js/cp/jquery.js?v={#cssjs_version#}"></script>
+<link type="text/css" rel="stylesheet" href="{#YXP_STATIC_DOMAIN#}/chrysler/css/common.css?v={#cssjs_version#}" />
+<link type="text/css" rel="stylesheet" href="{#YXP_STATIC_DOMAIN#}/chrysler/css/chrysler.css?v={#cssjs_version#}" />
+<link type="text/css" rel="stylesheet" href="{#YXP_STATIC_DOMAIN#}/css/project/faw/lossCar.css?v={#cssjs_version#}" />
+<script type="text/javascript" src="/js/common.js?v={#cssjs_version#}"></script>
+{block name="cssjs"}{/block}
+</head>
+<body>
+  <div style="width:800px;line-height:30px;font-size: 14px; " >
+  <p style="text-align:center;font-weight:bold;font-size:20px;">竞价记录</p>
+    <hr/>
+    <div class="mebInf10 mt10">         
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">        
+          <tr ><th  style='text-align:center;'>竞价时间</th><th  style='text-align:center;'>竞价人</th><th  style='text-align:center;'>竞价出手次数</th><th  style='text-align:center;'>竞价价格（万元）</th></tr>
+          {if $bid_list}
+          {assign var="top_uid" value=$bid_list.bid_list[0].uid}
+            {foreach $bid_list.bid_list as $b}
+            <tr {if $b.uid eq $top_uid} class="bg_yellow"{/if}>
+            <td  style='text-align:center;' >{$b.time_show}</td>
+            <td  style='text-align:center;'>{$b.user_mobile_erp}</td>
+            <td  style='text-align:center;'>{$b.count_bid}</td>
+            <td  style='text-align:center;'>{$b.price}</td>
+            </tr>
+              {/foreach}
+          {else}
+            <tr><td style='text-align:center;' colspan="4" >暂无数据</td></tr>
+          {/if}
+      </table>
+        </div> 
+           
+   
+<div class="clear"></div>
+ </div>
+ </body>
+</html>

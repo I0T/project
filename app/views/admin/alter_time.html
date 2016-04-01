@@ -1,0 +1,19 @@
+{block name="title"}时间格式：{$date}{/block}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+{block name="body"}
+<form action="/admin/auction/alter_time" method="post">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="csboxbt">
+        <tr style="color:#747476">
+          <td width="200">竞价开始时间</td>
+          <td class="jb_td04"><input name="start_time" /></td>
+        </tr>
+        <tr style="color:#747476">
+          <td width="200">竞价结束时间</td>
+          <td class="jb_td04"><input name="end_time" /></td>
+        </tr>
+    </table>
+    <input type="hidden" name="pid" value="{$publish.publishid}">
+    <input type="hidden" name="opt" value="1">
+    <input type="submit" value="修改">
+  </form>
+{/block}
